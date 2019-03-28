@@ -1,21 +1,51 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.image.*?>
 <?import javafx.scene.text.*?>
 <?import java.lang.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8">
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainMenuController">
    <children>
-      <AnchorPane prefHeight="800.0" prefWidth="800.0">
+      <ImageView fx:id="background" fitHeight="800.0" fitWidth="800.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../data/images/725e5dc00ba49c240cd489e7b87e0496.jpg" />
+         </image>
+      </ImageView>
+      <AnchorPane layoutX="1.0" prefHeight="800.0" prefWidth="800.0">
          <children>
-            <Label layoutX="307.0" layoutY="99.0" prefHeight="53.0" prefWidth="161.0" text="F L A P" textAlignment="CENTER">
+            <Label layoutX="311.0" layoutY="98.0" prefHeight="53.0" prefWidth="161.0" text="F L A P" textAlignment="CENTER">
                <font>
-                  <Font name="Zapf Dingbats" size="48.0" />
+                  <Font name="Apple SD GothicNeo ExtraBold" size="48.0" />
                </font>
             </Label>
+            <Button layoutX="275.0" layoutY="294.0" mnemonicParsing="false" onAction="#playButton" prefHeight="49.0" prefWidth="215.0" text="PLAY">
+               <font>
+                  <Font name="Futura Bold" size="24.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Button layoutX="275.0" layoutY="410.0" mnemonicParsing="false" onAction="#optionsButton" prefHeight="49.0" prefWidth="215.0" text="OPTIONS">
+               <font>
+                  <Font name="Futura Bold" size="24.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
+            <Button layoutX="275.0" layoutY="524.0" mnemonicParsing="false" onAction="#handle" prefHeight="49.0" prefWidth="215.0" text="QUIT">
+               <font>
+                  <Font name="Futura Bold" size="24.0" />
+               </font>
+               <effect>
+                  <DropShadow />
+               </effect>
+            </Button>
          </children>
       </AnchorPane>
    </children>
