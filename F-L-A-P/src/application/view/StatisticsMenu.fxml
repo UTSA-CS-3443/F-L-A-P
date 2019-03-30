@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.shape.*?>
 <?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import java.lang.*?>
@@ -10,11 +11,31 @@
    <children>
       <AnchorPane prefHeight="800.0" prefWidth="800.0">
          <children>
-            <Button layoutX="333.0" layoutY="735.0" mnemonicParsing="false" onAction="#handle" prefHeight="43.0" prefWidth="135.0" text="BACK">
+            <Button layoutX="250.0" layoutY="735.0" mnemonicParsing="false" onAction="#handle" prefHeight="43.0" prefWidth="135.0" text="BACK">
                <font>
                   <Font name="Futura Bold" size="24.0" />
                </font>
             </Button>
+            <Button layoutX="415.0" layoutY="735.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="135.0" text="RESET">
+               <font>
+                  <Font name="Futura Bold" size="24.0" />
+               </font>
+            </Button>
+            <Label layoutX="75.0" layoutY="25.0" prefHeight="45.0" prefWidth="150.0" text="Deaths">
+               <font>
+                  <Font name="Futura Bold" size="32.0" />
+               </font></Label>
+            <Line endX="650.0" layoutX="76.0" layoutY="70.0" />
+            <Label fx:id="deathCount" layoutX="350.0" layoutY="25.0">
+               <font>
+                  <Font name="Futura Bold" size="32.0" />
+               </font>
+            </Label>
+            <Label fx:id="statisticsError" layoutX="599.0" layoutY="778.0">
+               <font>
+                  <Font name="Futura Bold" size="14.0" />
+               </font>
+            </Label>
          </children>
       </AnchorPane>
    </children>
