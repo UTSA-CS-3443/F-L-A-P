@@ -29,6 +29,18 @@ public class MainMenuController implements EventHandler<ActionEvent>{
 			e.printStackTrace();
 		}
 	}
+	
+	//Statistics button method
+	public void statisticsButton(ActionEvent event) {
+		try {
+			Parent root = FXMLLoader.load(getClass().getResource("../view/StatisticsMenu.fxml"));
+			Main.stage.setScene(new Scene(root, 800, 800));
+			Main.stage.show();
+		} catch(Exception e) {
+			e.printStackTrace();
+		}
+	}
+	
 	//Quit Button method
 	@Override
 	public void handle(ActionEvent event) {
