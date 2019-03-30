@@ -22,7 +22,7 @@
                   <Font name="Apple SD GothicNeo ExtraBold" size="48.0" />
                </font>
             </Label>
-            <Button layoutX="275.0" layoutY="294.0" mnemonicParsing="false" onAction="#playButton" prefHeight="49.0" prefWidth="215.0" text="PLAY">
+            <Button layoutX="275.0" layoutY="275.0" mnemonicParsing="false" onAction="#playButton" prefHeight="49.0" prefWidth="215.0" text="PLAY">
                <font>
                   <Font name="Futura Bold" size="24.0" />
                </font>
@@ -30,7 +30,7 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Button layoutX="275.0" layoutY="410.0" mnemonicParsing="false" onAction="#optionsButton" prefHeight="49.0" prefWidth="215.0" text="OPTIONS">
+            <Button layoutX="275.0" layoutY="375.0" mnemonicParsing="false" onAction="#optionsButton" prefHeight="49.0" prefWidth="215.0" text="OPTIONS">
                <font>
                   <Font name="Futura Bold" size="24.0" />
                </font>
@@ -38,7 +38,15 @@
                   <DropShadow />
                </effect>
             </Button>
-            <Button layoutX="275.0" layoutY="524.0" mnemonicParsing="false" onAction="#handle" prefHeight="49.0" prefWidth="215.0" text="QUIT">
+            <Button layoutX="275.0" layoutY="475.0" mnemonicParsing="false" onAction="#statisticsButton" prefHeight="49.0" prefWidth="215.0" text="RECORDS">
+               <effect>
+                  <DropShadow />
+               </effect>
+               <font>
+                  <Font name="Futura Bold" size="24.0" />
+               </font>
+            </Button>
+            <Button layoutX="275.0" layoutY="575.0" mnemonicParsing="false" onAction="#handle" prefHeight="49.0" prefWidth="215.0" text="QUIT">
                <font>
                   <Font name="Futura Bold" size="24.0" />
                </font>
