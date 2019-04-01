@@ -27,16 +27,27 @@ public class StatisticsMenuController implements EventHandler<ActionEvent>, Init
 	@FXML
 	Label statisticsError;
 	
+	private Statistics stats = Statistics.getInstance();
+	
 	@Override
 	public void initialize( URL location, ResourceBundle resources )
 	{
-		//check if the statistics file is accessible
-		if( !( Main.stats.isAccessible() ) )
+		
+		try 
+		{
+			
+			stats.loadStatData();
+			
+		} 
+		catch (Exception e) 
 		{
 			
 			this.statisticsError.setText( "Unable to access statistics." );
+			e.printStackTrace();
 			
 		}
+		
+		this.deathCount.setText( Integer.toString( stats.getDeaths() ) );
 		
 	}
 	
@@ -44,15 +55,22 @@ public class StatisticsMenuController implements EventHandler<ActionEvent>, Init
 	@Override
 	public void handle( ActionEvent event ) 
 	{
+		
 		try 
 		{
+			
 			Parent root = FXMLLoader.load( getClass().getResource( "../view/MainMenu.fxml" ) );
 			Main.stage.setScene( new Scene( root, 800, 800 ) );
-			Main.stage.show();		
+			Main.stage.show();	
+			
 		} 
 		catch( Exception e ) 
 		{
+			
 			e.printStackTrace();	
+			
 		}	
+		
 	}
+	
 }

@@ -1,59 +1,106 @@
 package application.model;
 
 import java.io.File;
+import java.util.ArrayList;
+import java.util.Scanner;
 
 /**
- * Methods for maintaining in-game statistics
+ * Singleton class containing methods for maintaining user statistics.
  * 
  * @author Logan Poole (bct883)
  */
 public class Statistics {
 	
-	private final String inputFilePath = "data/statistics.txt";
-	private boolean isAccessible = true;
-	private int deaths;
+	//Singleton object of this class
+	private static Statistics singleInstance = null;
 	
-	public Statistics()
+	private final String inputFilePath = "data/statistics.txt";
+	private File file;
+	
+	private ArrayList<Integer> runs;
+	private int totalDistance;
+	
+	//Private constructor to protect singleton instance
+	private Statistics()
 	{
 		
-		File file = new File( this.inputFilePath );
+		runs = new ArrayList<Integer>();
+		file = new File( inputFilePath );
 		
-		//check if file exists, if not create one
-		if( !( file.isFile() ) )
+	}
+	
+	//Creates the singleton object if it doesn't exist, then returns the singleton object
+	public static Statistics getInstance()
+	{
+		if( singleInstance == null)
 		{
 			
-			try
+			singleInstance = new Statistics();
+			
+		}
+		return ( singleInstance );
+		
+	}
+	
+	//Reads statistics in from file
+	public void loadStatData() throws Exception
+	{
+		Scanner inpfScan = new Scanner( this.file );
+		String[] tokens;
+		String line;
+		
+		//Single statistics like distance on first line in csv format
+		if( inpfScan.hasNextLine() )
+		{
+			
+			line = inpfScan.nextLine();
+			tokens = line.split( "," );
+			
+			this.totalDistance = Integer.parseInt( tokens[0] );
+			
+		}
+		
+		//Individual runs on separate lines
+		while( inpfScan.hasNextLine() )
+		{
+			line = inpfScan.nextLine();
+			this.runs.add( Integer.parseInt( line ) );
+		}
+		
+		inpfScan.close();
+		
+	}
+	
+	public void saveStatData() throws Exception
+	{
+		
+		
+		
+	}
+	
+	//Adds a run to the arraylist, maintaining a descending sort
+	public void addRun( int obstaclesCleared )
+	{
+		for( int i=0; i<this.runs.size(); i++ )
+		{
+			
+			if( obstaclesCleared > this.runs.get( i ) )
 			{
 				
-				file.createNewFile();
-				
-			}
-			catch( Exception e )
-			{
-				
-				e.printStackTrace();
-				this.isAccessible = false;
+				this.runs.add( i, obstaclesCleared );
 				return;
 				
 			}
 			
 		}
-		
-		//check if file is readable
-		if( !( file.canRead() ) )
-		{
-			
-			this.isAccessible = false;
-			return;
-			
-		}
+		this.runs.add( obstaclesCleared );
 		
 	}
 	
-	public boolean isAccessible()
+	public int getDeaths()
 	{
 		
-		return ( this.isAccessible );
+		return ( this.runs.size() );
 		
 	}
 	
