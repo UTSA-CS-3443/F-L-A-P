@@ -47,6 +47,16 @@ public class Statistics {
 	//Reads statistics in from file
 	public void loadStatData() throws Exception
 	{
+		
+		//If file doesn't exist, create it then leave method
+		if( !( this.file.exists() ) )
+		{
+			
+			this.file.createNewFile();
+			return;
+			
+		}
+		
 		Scanner inpfScanner = new Scanner( this.file );
 		String[] tokens;
 		String line;
@@ -78,6 +88,13 @@ public class Statistics {
 	//Save statistics to data/statistics.txt
 	public void saveStatData() throws Exception
 	{
+		//If file doesn't exist, create it then write to it
+		if( !( this.file.exists() ) )
+		{
+			
+			this.file.createNewFile();
+			
+		}
 		
 		int i;
 		BufferedWriter oupfWriter = new BufferedWriter( new FileWriter( this.filePath ) );
