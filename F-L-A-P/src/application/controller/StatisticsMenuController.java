@@ -22,7 +22,19 @@ public class StatisticsMenuController implements EventHandler<ActionEvent>, Init
 {
 	
 	@FXML
-	Label deathCount;
+	Label longestRunLabel;
+	
+	@FXML
+	Label averageRunLabel;
+	
+	@FXML
+	Label deathsLabel;
+	
+	@FXML
+	Label totalDistanceLabel;
+	
+	@FXML
+	Label obstaclesClearedLabel;
 	
 	@FXML
 	Label statisticsError;
@@ -32,7 +44,11 @@ public class StatisticsMenuController implements EventHandler<ActionEvent>, Init
 	public void setLabels()
 	{
 		
-		this.deathCount.setText( Integer.toString( stats.getDeaths() ) );
+		this.longestRunLabel.setText( Integer.toString( stats.getLongestRun() ) );
+		this.averageRunLabel.setText( Integer.toString( stats.getAverageRun() ) ); 
+		this.deathsLabel.setText( Integer.toString( stats.getDeaths() ) );
+		this.totalDistanceLabel.setText( Integer.toString( stats.getTotalDistance() ) );
+		this.obstaclesClearedLabel.setText( Integer.toString( stats.getObstaclesCleared() ) );
 		
 	}
 	

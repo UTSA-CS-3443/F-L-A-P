@@ -28,6 +28,7 @@ public class Statistics {
 		
 		runs = new ArrayList<Integer>();
 		file = new File( filePath );
+		totalDistance = 0;
 		
 	}
 	
@@ -151,6 +152,8 @@ public class Statistics {
 	
 	public int getLongestRun()
 	{
+		if( this.runs.size() == 0 )
+			return ( 0 );
 		
 		return ( this.runs.get( 0 ) );
 		
@@ -175,6 +178,8 @@ public class Statistics {
 	
 	public int getAverageRun()
 	{
+		if( this.runs.size() == 0 )
+			return ( 0 );
 		
 		return ( this.getObstaclesCleared() / this.runs.size() );
 		
