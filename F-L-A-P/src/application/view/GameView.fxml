@@ -1,21 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.controller.GameController">
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.GameController">
    <children>
       <Pane prefHeight="800.0" prefWidth="800.0">
          <children>
-            <ImageView fitHeight="800.0" fitWidth="800.0" pickOnBounds="true">
-               <image>
-                  <Image url="@../../../data/images/725e5dc00ba49c240cd489e7b87e0496.jpg" />
-               </image>
-            </ImageView>
+            <Pane fx:id="pane" onKeyPressed="#handle" prefHeight="800.0" prefWidth="800.0">
+               <children>
+                  <ImageView fx:id="birdImage" fitHeight="150.0" fitWidth="200.0" layoutX="60.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true" />
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>

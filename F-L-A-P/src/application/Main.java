@@ -29,6 +29,7 @@ public class Main extends Application {
 		//Add Application icon and convert from file to image
 		File iconFile = new File("data/images/icon.png");
 		Image icon = new Image(iconFile.toURI().toString());
+		stage = primaryStage;
 		
 		//Load Scene
 		try {
@@ -36,8 +37,7 @@ public class Main extends Application {
 			primaryStage.setScene(new Scene(root, 800, 800));
 			primaryStage.setTitle("FLAP");
 			primaryStage.getIcons().add(icon);
-			primaryStage.show();
-			stage = primaryStage;
+			primaryStage.show();	
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
