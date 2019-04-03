@@ -149,4 +149,49 @@ public class Statistics {
 		
 	}
 	
+	public int getLongestRun()
+	{
+		
+		return ( this.runs.get( 0 ) );
+		
+	}
+	
+	public int getObstaclesCleared()
+	{
+		
+		int total = 0;
+		int i;
+		
+		for( i=0; i < this.runs.size(); i++ )
+		{
+			
+			total = total + this.runs.get( i );
+			
+		}
+		
+		return ( total );
+		
+	}
+	
+	public int getAverageRun()
+	{
+		
+		return ( this.getObstaclesCleared() / this.runs.size() );
+		
+	}
+	
+	public int getTotalDistance()
+	{
+		
+		return ( this.totalDistance );
+		
+	}
+	
+	public void setTotalDistance( int newDistance )
+	{
+		
+		this.totalDistance = newDistance;
+	
+	}
+	
 }
