@@ -1,3 +1,8 @@
+/*
+ * MainMenuController.java
+ * @authors Zachary Ellis (ebl533)
+ * Contains methods for the main menu selection handling
+ */
 package application.controller;
 
 import application.Main;
@@ -17,14 +22,22 @@ public class MainMenuController implements EventHandler<ActionEvent>{
 	//Play Button method
 	public void playButton(ActionEvent event) {
 		try {
+<<<<<<< HEAD
 			Parent root = FXMLLoader.load(getClass().getResource("../view/GameView.fxml"));
 			Main.stage.setScene(new Scene(root, 800, 800));
 			Main.stage.show();
 
 		} catch(Exception e) {
+=======
+			Parent root = FXMLLoader.load(getClass().getResource("../view/CharacterSelection.fxml"));
+			Main.stage.setScene(new Scene(root, 800,800));
+			Main.stage.show();
+		} catch (Exception e) {
+>>>>>>> branch 'master' of https://github.com/UTSA-CS-3443/F-L-A-P.git
 			e.printStackTrace();
 		}
 	}
+	
 	//Options button method
 	public void optionsButton(ActionEvent event) {
 		try {
@@ -53,4 +66,5 @@ public class MainMenuController implements EventHandler<ActionEvent>{
 	public void handle(ActionEvent event) {
 		System.exit(0);
 	}
+
 }

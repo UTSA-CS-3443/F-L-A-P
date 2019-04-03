@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.CharacterSelectionController">
+   <children>
+      <ImageView fitHeight="800.0" fitWidth="800.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../data/images/725e5dc00ba49c240cd489e7b87e0496.jpg" />
+         </image>
+      </ImageView>
+      <Button layoutX="178.0" layoutY="493.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" />
+      <Button layoutX="479.0" layoutY="493.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" />
+      <Button layoutX="103.0" layoutY="227.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" />
+      <Button layoutX="325.0" layoutY="227.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" />
+      <Button layoutX="554.0" layoutY="227.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" />
+      <Label alignment="CENTER" layoutX="82.0" layoutY="400.0" prefHeight="68.0" prefWidth="192.0" text="Label" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="458.0" layoutY="662.0" prefHeight="68.0" prefWidth="192.0" text="Label" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="157.0" layoutY="662.0" prefHeight="68.0" prefWidth="192.0" text="Label" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="533.0" layoutY="400.0" prefHeight="68.0" prefWidth="192.0" text="Label" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="304.0" layoutY="400.0" prefHeight="68.0" prefWidth="192.0" text="Label" textAlignment="CENTER" />
+      <Button layoutX="698.0" layoutY="14.0" mnemonicParsing="false" onAction="#options" prefHeight="40.0" prefWidth="81.0" text="Options" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainMenu" prefHeight="40.0" prefWidth="81.0" text="Main Menu" />
+   </children>
+</AnchorPane>
