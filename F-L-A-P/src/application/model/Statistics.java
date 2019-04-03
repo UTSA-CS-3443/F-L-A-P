@@ -1,6 +1,8 @@
 package application.model;
 
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.Scanner;
 
@@ -14,7 +16,7 @@ public class Statistics {
 	//Singleton object of this class
 	private static Statistics singleInstance = null;
 	
-	private final String inputFilePath = "data/statistics.txt";
+	private final String filePath = "data/statistics.txt";
 	private File file;
 	
 	private ArrayList<Integer> runs;
@@ -25,7 +27,7 @@ public class Statistics {
 	{
 		
 		runs = new ArrayList<Integer>();
-		file = new File( inputFilePath );
+		file = new File( filePath );
 		
 	}
 	
@@ -45,15 +47,15 @@ public class Statistics {
 	//Reads statistics in from file
 	public void loadStatData() throws Exception
 	{
-		Scanner inpfScan = new Scanner( this.file );
+		Scanner inpfScanner = new Scanner( this.file );
 		String[] tokens;
 		String line;
 		
-		//Single statistics like distance on first line in csv format
-		if( inpfScan.hasNextLine() )
+		//Single metrics on one line, comma separated
+		if( inpfScanner.hasNextLine() )
 		{
 			
-			line = inpfScan.nextLine();
+			line = inpfScanner.nextLine();
 			tokens = line.split( "," );
 			
 			this.totalDistance = Integer.parseInt( tokens[0] );
@@ -61,27 +63,53 @@ public class Statistics {
 		}
 		
 		//Individual runs on separate lines
-		while( inpfScan.hasNextLine() )
+		while( inpfScanner.hasNextLine() )
 		{
-			line = inpfScan.nextLine();
+			
+			line = inpfScanner.nextLine();
 			this.runs.add( Integer.parseInt( line ) );
+			
 		}
 		
-		inpfScan.close();
+		inpfScanner.close();
 		
 	}
 	
+	//Save statistics to data/statistics.txt
 	public void saveStatData() throws Exception
 	{
 		
+		int i;
+		BufferedWriter oupfWriter = new BufferedWriter( new FileWriter( this.filePath ) );
 		
+		//Single metrics on one line, comma separated
+		oupfWriter.write( this.totalDistance + "," );
+		oupfWriter.write( "\n" );
+		
+		//Individual runs on separate lines
+		for( i=0; i < this.runs.size(); i++ )
+		{
+			
+			oupfWriter.write( this.runs.get( i ) + "\n" );
+			
+		}
+		
+		oupfWriter.close();
+		
+	}
+	
+	public void resetStatData() throws Exception
+	{
+		
+		this.runs.clear();
+		this.totalDistance = 0;
 		
 	}
 	
 	//Adds a run to the arraylist, maintaining a descending sort
 	public void addRun( int obstaclesCleared )
 	{
-		for( int i=0; i<this.runs.size(); i++ )
+		for( int i=0; i < this.runs.size(); i++ )
 		{
 			
 			if( obstaclesCleared > this.runs.get( i ) )

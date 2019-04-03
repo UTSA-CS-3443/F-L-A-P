@@ -29,6 +29,13 @@ public class StatisticsMenuController implements EventHandler<ActionEvent>, Init
 	
 	private Statistics stats = Statistics.getInstance();
 	
+	public void setLabels()
+	{
+		
+		this.deathCount.setText( Integer.toString( stats.getDeaths() ) );
+		
+	}
+	
 	@Override
 	public void initialize( URL location, ResourceBundle resources )
 	{
@@ -47,7 +54,30 @@ public class StatisticsMenuController implements EventHandler<ActionEvent>, Init
 			
 		}
 		
-		this.deathCount.setText( Integer.toString( stats.getDeaths() ) );
+		setLabels();
+		
+	}
+	
+	public void resetButton( ActionEvent event )
+	{
+		
+		System.out.print( "StatisticsMenu resetButton pressed.\n" );
+		
+		try 
+		{
+			
+			stats.resetStatData();
+			stats.saveStatData();
+			setLabels();
+			
+		} 
+		catch (Exception e) 
+		{
+			
+			this.statisticsError.setText( "Unable to access statistics." );
+			e.printStackTrace();
+			
+		}
 		
 	}
 	

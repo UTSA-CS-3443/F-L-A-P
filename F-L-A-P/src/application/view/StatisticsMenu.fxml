@@ -16,7 +16,7 @@
                   <Font name="Futura Bold" size="24.0" />
                </font>
             </Button>
-            <Button layoutX="415.0" layoutY="735.0" mnemonicParsing="false" prefHeight="43.0" prefWidth="135.0" text="RESET">
+            <Button layoutX="415.0" layoutY="735.0" mnemonicParsing="false" onAction="#resetButton" prefHeight="43.0" prefWidth="135.0" text="RESET">
                <font>
                   <Font name="Futura Bold" size="24.0" />
                </font>
