@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.image.*?>
 <?import java.lang.*?>
@@ -22,7 +23,12 @@
       <Label alignment="CENTER" layoutX="157.0" layoutY="662.0" prefHeight="68.0" prefWidth="192.0" text="Label" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="533.0" layoutY="400.0" prefHeight="68.0" prefWidth="192.0" text="Label" textAlignment="CENTER" />
       <Label alignment="CENTER" layoutX="304.0" layoutY="400.0" prefHeight="68.0" prefWidth="192.0" text="Label" textAlignment="CENTER" />
-      <Button layoutX="698.0" layoutY="14.0" mnemonicParsing="false" onAction="#options" prefHeight="40.0" prefWidth="81.0" text="Options" />
-      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainMenu" prefHeight="40.0" prefWidth="81.0" text="Main Menu" />
+      <Button layoutX="668.0" layoutY="14.0" mnemonicParsing="false" onAction="#options" prefHeight="40.0" prefWidth="111.0" text="Options" />
+      <Button layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainMenu" prefHeight="40.0" prefWidth="111.0" text="Main Menu" />
+      <Button layoutX="332.0" layoutY="706.0" mnemonicParsing="false" onAction="#play" prefHeight="55.0" prefWidth="126.0" text="F L A P">
+         <font>
+            <Font name="Futura Bold" size="13.0" />
+         </font>
+      </Button>
    </children>
 </AnchorPane>
