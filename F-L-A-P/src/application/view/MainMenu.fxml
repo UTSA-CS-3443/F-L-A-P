@@ -10,11 +10,6 @@
 
 <AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainMenuController">
    <children>
-      <ImageView fx:id="background" fitHeight="800.0" fitWidth="800.0" pickOnBounds="true">
-         <image>
-            <Image url="@../../../data/images/725e5dc00ba49c240cd489e7b87e0496.jpg" />
-         </image>
-      </ImageView>
       <AnchorPane layoutX="1.0" prefHeight="800.0" prefWidth="800.0">
          <children>
             <Label layoutX="320.0" layoutY="75.0" prefHeight="53.0" prefWidth="161.0" text="F L A P" textAlignment="CENTER">
@@ -26,9 +21,6 @@
                <font>
                   <Font name="Futura Bold" size="24.0" />
                </font>
-               <effect>
-                  <DropShadow />
-               </effect>
             </Button>
             <Button layoutX="293.0" layoutY="375.0" mnemonicParsing="false" onAction="#optionsButton" prefHeight="49.0" prefWidth="215.0" text="OPTIONS">
                <font>

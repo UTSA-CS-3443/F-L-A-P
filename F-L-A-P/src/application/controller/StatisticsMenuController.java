@@ -1,3 +1,9 @@
+/**
+ * StatisticsMenuController.java
+ * Event handling for the statistics view
+ * @author Logan Poole (bct883)
+ * @author Zachary Ellis (ebl533)
+ */
 package application.controller;
 
 import application.model.Statistics;
@@ -13,11 +19,6 @@ import javafx.scene.control.Label;
 import java.net.URL;
 import java.util.ResourceBundle;
 
-/**
- * Event handling for the statistics view
- * 
- * @author Logan Poole (bct883)
- */
 public class StatisticsMenuController implements EventHandler<ActionEvent>, Initializable
 {
 	
@@ -97,7 +98,7 @@ public class StatisticsMenuController implements EventHandler<ActionEvent>, Init
 		
 	}
 	
-	//return to main menu
+	//return to previous page
 	@Override
 	public void handle( ActionEvent event ) 
 	{
@@ -106,7 +107,10 @@ public class StatisticsMenuController implements EventHandler<ActionEvent>, Init
 		{
 			
 			Parent root = FXMLLoader.load( getClass().getResource( "../view/MainMenu.fxml" ) );
-			Main.stage.setScene( new Scene( root, 800, 800 ) );
+			root.setId( "mainPane" );
+			Scene scene = new Scene( root, 800, 800 );
+			scene.getStylesheets().add( getClass().getResource( "../application.css" ).toExternalForm() );
+			Main.stage.setScene( scene );
 			Main.stage.show();	
 			
 		} 
