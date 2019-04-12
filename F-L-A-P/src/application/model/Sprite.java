@@ -69,6 +69,13 @@ public class Sprite {
 	}
 	
 	/**
+	 * @param fps - simulates frames per second, higher number = less fps
+	 */
+	public void refresh(double fps) {
+		setXYPosition(xPosition += (fps * xVelocity), yPosition += (fps * yVelocity));
+	}
+	
+	/**
 	 * @return the xVelocity
 	 */
 	public double getXVelocity() {
@@ -89,7 +96,6 @@ public class Sprite {
 	public void setXYVelocity(double x, double y) {
 		xVelocity = x;
 		yVelocity = y;
-		return;
 	}
 	
 	/**
@@ -99,7 +105,6 @@ public class Sprite {
 	public void addXYVelocity(double x, double y) {
 		xVelocity += x;
 		yVelocity += y;
-		return;
 	}
 
 	/**

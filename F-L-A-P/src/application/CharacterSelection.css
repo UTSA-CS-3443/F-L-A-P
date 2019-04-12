@@ -1,9 +1,9 @@
 #background {
-	-fx-background-image: url("../../data/images/725e5dc00ba49c240cd489e7b87e0496.jpg");
+	-fx-background-image: url("data/images/725e5dc00ba49c240cd489e7b87e0496.jpg");
 }
 
 #character {
-	-fx-background-image: url("../../data/images/bird.png");
+	-fx-background-image: url("data/images/bird.png");
 	-fx-background-color: #28c401;
 }
 
