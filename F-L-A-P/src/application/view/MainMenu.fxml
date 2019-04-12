@@ -8,45 +8,12 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainMenuController">
+<AnchorPane layoutX="1.0" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainMenuController">
    <children>
-      <AnchorPane layoutX="1.0" prefHeight="800.0" prefWidth="800.0">
-         <children>
-            <Label layoutX="320.0" layoutY="75.0" prefHeight="53.0" prefWidth="161.0" text="F L A P" textAlignment="CENTER">
-               <font>
-                  <Font name="Apple SD GothicNeo ExtraBold" size="48.0" />
-               </font>
-            </Label>
-            <Button layoutX="293.0" layoutY="275.0" mnemonicParsing="false" onAction="#playButton" prefHeight="49.0" prefWidth="215.0" text="PLAY">
-               <font>
-                  <Font name="Futura Bold" size="24.0" />
-               </font>
-            </Button>
-            <Button layoutX="293.0" layoutY="375.0" mnemonicParsing="false" onAction="#optionsButton" prefHeight="49.0" prefWidth="215.0" text="OPTIONS">
-               <font>
-                  <Font name="Futura Bold" size="24.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Button>
-            <Button layoutX="293.0" layoutY="475.0" mnemonicParsing="false" onAction="#statisticsButton" prefHeight="49.0" prefWidth="215.0" text="RECORDS">
-               <effect>
-                  <DropShadow />
-               </effect>
-               <font>
-                  <Font name="Futura Bold" size="24.0" />
-               </font>
-            </Button>
-            <Button layoutX="293.0" layoutY="575.0" mnemonicParsing="false" onAction="#handle" prefHeight="49.0" prefWidth="215.0" text="QUIT">
-               <font>
-                  <Font name="Futura Bold" size="24.0" />
-               </font>
-               <effect>
-                  <DropShadow />
-               </effect>
-            </Button>
-         </children>
-      </AnchorPane>
+      <Label fx:id="title" layoutX="320.0" layoutY="75.0" prefHeight="53.0" prefWidth="161.0" text="F L A P" textAlignment="CENTER" />
+         <Button layoutX="293.0" layoutY="275.0" mnemonicParsing="false" onAction="#playButton" prefHeight="49.0" prefWidth="215.0" text="PLAY" />
+         <Button layoutX="293.0" layoutY="375.0" mnemonicParsing="false" onAction="#optionsButton" prefHeight="49.0" prefWidth="215.0" text="OPTIONS" />
+         <Button layoutX="293.0" layoutY="475.0" mnemonicParsing="false" onAction="#statisticsButton" prefHeight="49.0" prefWidth="215.0" text="RECORDS" />
+         <Button layoutX="293.0" layoutY="575.0" mnemonicParsing="false" onAction="#quit" prefHeight="49.0" prefWidth="215.0" text="QUIT" />
    </children>
 </AnchorPane>

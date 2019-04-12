@@ -1,5 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.*?>
+<?import javafx.scene.canvas.*?>
 <?import javafx.scene.control.*?>
 <?import javafx.scene.shape.*?>
 <?import javafx.scene.image.*?>
@@ -7,16 +9,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.GameController">
+<Group fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.GameController">
    <children>
-      <Pane prefHeight="800.0" prefWidth="800.0">
-         <children>
-            <Pane fx:id="pane" onKeyPressed="#handle" prefHeight="800.0" prefWidth="800.0">
-               <children>
-                  <ImageView fx:id="birdImage" fitHeight="150.0" fitWidth="200.0" layoutX="60.0" layoutY="323.0" pickOnBounds="true" preserveRatio="true" />
-               </children>
-            </Pane>
-         </children>
-      </Pane>
+      <ImageView fx:id="background" fitHeight="800.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="false" />
+      <Canvas fx:id="pipesCanvas" height="800.0" width="800.0" />
+      <Canvas fx:id="birdCanvas" height="200.0" layoutX="33.0" layoutY="213.0" width="200.0" />
+      <Label fx:id="count" layoutX="400.0" layoutY="26.0" />
    </children>
-</AnchorPane>
+</Group>

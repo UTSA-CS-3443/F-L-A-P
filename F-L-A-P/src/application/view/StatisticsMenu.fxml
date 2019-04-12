@@ -7,80 +7,25 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.StatisticsMenuController">
+<AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.StatisticsMenuController">
    <children>
-      <AnchorPane prefHeight="800.0" prefWidth="800.0">
-         <children>
-            <Button layoutX="250.0" layoutY="735.0" mnemonicParsing="false" onAction="#handle" prefHeight="43.0" prefWidth="135.0" text="BACK">
-               <font>
-                  <Font name="Futura Bold" size="24.0" />
-               </font>
-            </Button>
-            <Button layoutX="415.0" layoutY="735.0" mnemonicParsing="false" onAction="#resetButton" prefHeight="43.0" prefWidth="135.0" text="RESET">
-               <font>
-                  <Font name="Futura Bold" size="24.0" />
-               </font>
-            </Button>
-            <Label fx:id="statisticsError" layoutX="599.0" layoutY="778.0">
-               <font>
-                  <Font name="Futura Bold" size="14.0" />
-               </font>
-            </Label>
-            <Label layoutX="75.0" layoutY="25.0" prefHeight="45.0" prefWidth="300.0" text="Longest Run">
-               <font>
-                  <Font name="Futura Bold" size="32.0" />
-               </font></Label>
-            <Label fx:id="longestRunLabel" layoutX="400.0" layoutY="25.0">
-               <font>
-                  <Font name="Futura Bold" size="32.0" />
-               </font>
-            </Label>
-            <Line endX="650.0" layoutX="75.0" layoutY="70.0" />
-            <Label layoutX="75.0" layoutY="100.0" prefHeight="45.0" prefWidth="300.0" text="Average Run">
-               <font>
-                  <Font name="Futura Bold" size="32.0" />
-               </font>
-            </Label>
-            <Label fx:id="averageRunLabel" layoutX="400.0" layoutY="100.0">
-               <font>
-                  <Font name="Futura Bold" size="32.0" />
-               </font>
-            </Label>
-            <Line endX="650.0" layoutX="75.0" layoutY="145.0" />
-            <Label layoutX="75.0" layoutY="175.0" prefHeight="45.0" prefWidth="300.0" text="Deaths">
-               <font>
-                  <Font name="Futura Bold" size="32.0" />
-               </font>
-            </Label>
-            <Label fx:id="deathsLabel" layoutX="400.0" layoutY="175.0">
-               <font>
-                  <Font name="Futura Bold" size="32.0" />
-               </font>
-            </Label>
-            <Line endX="650.0" layoutX="75.0" layoutY="220.0" />
-            <Label layoutX="75.0" layoutY="250.0" prefHeight="45.0" prefWidth="300.0" text="Total Distance">
-               <font>
-                  <Font name="Futura Bold" size="32.0" />
-               </font>
-            </Label>
-            <Label fx:id="totalDistanceLabel" layoutX="400.0" layoutY="250.0">
-               <font>
-                  <Font name="Futura Bold" size="32.0" />
-               </font>
-            </Label>
-            <Line endX="650.0" layoutX="75.0" layoutY="295.0" />
-            <Label layoutX="75.0" layoutY="325.0" prefHeight="45.0" prefWidth="250.0" text="Pipes Cleared">
-               <font>
-                  <Font name="Futura Bold" size="32.0" />
-               </font>
-            </Label>
-            <Label fx:id="obstaclesClearedLabel" layoutX="400.0" layoutY="325.0">
-               <font>
-                  <Font name="Futura Bold" size="32.0" />
-               </font>
-            </Label>
-            <Line endX="650.0" layoutX="75.0" layoutY="370.0" />
-         </children>
-      </AnchorPane>
+      <Button layoutX="250.0" layoutY="735.0" mnemonicParsing="false" onAction="#mainMenu" prefHeight="43.0" prefWidth="135.0" text="BACK" />
+      <Button layoutX="415.0" layoutY="735.0" mnemonicParsing="false" onAction="#resetButton" prefHeight="43.0" prefWidth="135.0" text="RESET" />
+      <Label fx:id="statisticsError" layoutX="599.0" layoutY="778.0" />
+      <Label layoutX="75.0" layoutY="25.0" prefHeight="45.0" prefWidth="300.0" text="Longest Run" />
+      <Label fx:id="longestRunLabel" layoutX="400.0" layoutY="25.0" />
+      <Line endX="650.0" layoutX="75.0" layoutY="70.0" />
+      <Label layoutX="75.0" layoutY="100.0" prefHeight="45.0" prefWidth="300.0" text="Average Run" />
+      <Label fx:id="averageRunLabel" layoutX="400.0" layoutY="100.0" />
+      <Line endX="650.0" layoutX="75.0" layoutY="145.0" />
+      <Label layoutX="75.0" layoutY="175.0" prefHeight="45.0" prefWidth="300.0" text="Deaths" />
+      <Label fx:id="deathsLabel" layoutX="400.0" layoutY="175.0" />
+      <Line endX="650.0" layoutX="75.0" layoutY="220.0" />
+      <Label layoutX="75.0" layoutY="250.0" prefHeight="45.0" prefWidth="300.0" text="Total Distance" />
+      <Label fx:id="totalDistanceLabel" layoutX="400.0" layoutY="250.0" />
+      <Line endX="650.0" layoutX="75.0" layoutY="295.0" />
+      <Label layoutX="75.0" layoutY="325.0" prefHeight="45.0" prefWidth="250.0" text="Pipes Cleared" />
+      <Label fx:id="obstaclesClearedLabel" layoutX="400.0" layoutY="325.0" />
+      <Line endX="650.0" layoutX="75.0" layoutY="370.0" />
    </children>
 </AnchorPane>
