@@ -2,10 +2,6 @@ package application.model;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-import java.net.URL;
-import java.util.ResourceBundle;
-
-import javafx.fxml.Initializable;
 import javafx.scene.image.Image;
 
 /**
@@ -17,22 +13,28 @@ public class Pipe extends Sprite {
 	 * Pipe Variables
 	 */
 	private boolean up;
+	private int GAP = 150;
 	
 	/**
 	 * Constructor for Pipe
 	 * @param up Pipe orientation
 	 * @param height pipe gap location
 	 */
-	public Pipe(boolean up, double height) {
+	public Pipe(boolean up, double yValue) {
 		try {
 			this.up = up;
-			if (up)
-				setImage(new Image(new FileInputStream("src/application/data/images/pipe_up.png"), 70, height, false, false));
-			else 
-				setImage(new Image(new FileInputStream("src/application/data/images/pipe_down.png"), 70, height, false, false));
-			setWidthHeight(getImage().getWidth(), getImage().getHeight());
+			if (yValue < 200)
+				yValue = 200;
+			if (up) {
+				setImage(new Image(new FileInputStream("src/application/data/images/pipe_up.png"), 70, 600, false, false));
+				setXYPosition(600, yValue); //Testing parameters ACTUAL: (800, yValue)
+			}
+			else {
+				setImage(new Image(new FileInputStream("src/application/data/images/pipe_down.png"), 70, 600, false, false));
+				setXYPosition(600, yValue - (600 + GAP)); //Testing parameters ACTUAL: (800, yValue - (600 + GAP))
+			}
+			setWidthHeight((int) getImage().getWidth(), (int) getImage().getHeight());
 			setXYVelocity(-.5, 0);
-			setXYPosition(600, height); //Testing parameters ACTUAL: (800, ??height??)
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}

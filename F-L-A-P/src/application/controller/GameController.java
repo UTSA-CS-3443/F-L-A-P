@@ -64,9 +64,12 @@ public class GameController { //no implements/extends for controller
 	private void initializeGame() {
 		pipeSprite = pipesCanvas.getGraphicsContext2D();
 		birdSprite = birdCanvas.getGraphicsContext2D();
+		pipeSprite.clearRect(0, 0, 800, 800);
+		birdSprite.clearRect(0, 0, 800, 800);
 		
-		initializePipeSet();
 		refreshBird();
+		initializePipeSet();
+
 		
 		count.setText(String.valueOf(0));		
 	}
@@ -75,11 +78,11 @@ public class GameController { //no implements/extends for controller
 	 * Initializes pipe pair
 	 */
 	private void initializePipeSet() {                                        
-		double height = (double) (new Random()).nextInt(800) + 1;                //ISSUE: pipes not loading correctly EVERY time
+		double height = (double) (new Random()).nextInt(700) + 1;                //ISSUE: pipes not loading correctly EVERY time
 		System.out.print("\nRandom Height Value: " + String.valueOf(height)); 
 		Pipe upPipe = new Pipe(true, height);
-		Pipe downPipe = new Pipe(false, height - 250);
-		System.out.print("\nX Value: " + String.valueOf(upPipe.getXPosition()));
+		Pipe downPipe = new Pipe(false, height);
+		System.out.print("\n down Y: " + String.valueOf(downPipe.getYPosition()) + "\nUp Y: " + String.valueOf(upPipe.getYPosition()));
 		
 		upPipe.setXYVelocity(-.5, 0);
 		downPipe.setXYVelocity(-.5, 0);
@@ -131,10 +134,10 @@ public class GameController { //no implements/extends for controller
 	}
 	
 	/**
-	 * hitPipe - checks for collisions
+	 * checkCollision - checks for collisions
 	 * @return Boolean if bird hit pipe
 	 */
-	private boolean hitPipe() {
+	private boolean checkCollision() { //floor at ~650 Y Coordinate
 		return false;
 	}
 }

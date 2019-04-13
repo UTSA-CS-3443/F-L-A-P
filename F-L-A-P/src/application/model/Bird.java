@@ -1,19 +1,24 @@
 package application.model;
 
-import java.net.URL;
-import java.util.ResourceBundle;
-import javafx.fxml.Initializable;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+
 import javafx.scene.image.Image;
 
 /**
  * @author Zachary Ellis (ebl533)
  *
  */
-public class Bird extends Sprite implements Initializable {	
-	@Override
-	public void initialize(URL location, ResourceBundle resources) {
-		setImage(new Image("data/images/bird.png"));
-		setWidthHeight(getImage().getWidth(), getImage().getHeight());
-		setXYPosition(50, 400);
+public class Bird extends Sprite {	
+	public int GRAVITY = 50;
+	public Bird() {
+		try {
+			setImage(new Image(new FileInputStream("src/application/data/images/bird.png"), 55, 55, false, false));
+			setWidthHeight((int) getImage().getWidth(), (int) getImage().getHeight());
+			setXYPosition(75, 400);
+			setXYVelocity(0, GRAVITY);
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		}
 	}
 }

@@ -15,8 +15,8 @@ public class Sprite {
 	private double yPosition;
 	private double xVelocity;
 	private double yVelocity;
-	private double width;
-	private double height;
+	private int width;
+	private int height;
 	
 	/**
 	 * Constructor
@@ -110,14 +110,14 @@ public class Sprite {
 	/**
 	 * @return the width
 	 */
-	public double getWidth() {
+	public int getWidth() {
 		return width;
 	}
 
 	/**
 	 * @return the height
 	 */
-	public double getHeight() {
+	public int getHeight() {
 		return height;
 	}
 	
@@ -125,7 +125,7 @@ public class Sprite {
 	 * @param width Image width
 	 * @param height Image height
 	 */
-	public void setWidthHeight(double width, double height) {
+	public void setWidthHeight(int width, int height) {
 		this.width = width;
 		this.height = height;
 	}
