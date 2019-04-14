@@ -33,7 +33,7 @@ public class GameController { //no implements/extends for controller
 	private ArrayList<Pipe> pipes;
 	private GraphicsContext pipeSprite, birdSprite;
 	private AnimationTimer gameplay; //for game loop
-	private boolean running;
+	private boolean running, jumping;
 	
 	/**
 	 * Constructor for GameController
@@ -42,43 +42,43 @@ public class GameController { //no implements/extends for controller
 		bird = new Bird();
 		pipes = new ArrayList<Pipe>();
 		running = true;
+		jumping = false;
 	}
 
 	@FXML
-	public void initialize() {
+	private void initialize() {
 		Scene scene = Main.stage.getScene(); 
 		scene.setOnKeyPressed(e -> { //Adding event listener to scene (Space to jump)
-			if (e.getCode().equals(KeyCode.SPACE)) 
-				jump();
+			if (e.getCode().equals(KeyCode.SPACE))
+				jumping = true;
 		});
 		Main.stage.setScene(scene);
 		Main.stage.show();
-		
 		background.setId("background");
+		
 		initializeGame();		
 	}
 	
 	/**
 	 * Loads assets onto screen and sets up game
 	 */
-	private void initializeGame() {
+	private void initializeGame() {		
 		pipeSprite = pipesCanvas.getGraphicsContext2D();
 		birdSprite = birdCanvas.getGraphicsContext2D();
-		pipeSprite.clearRect(0, 0, 800, 800);
-		birdSprite.clearRect(0, 0, 800, 800);
 		
 		refreshBird();
 		initializePipeSet();
 
-		
-		count.setText(String.valueOf(0));		
+		count.setText(String.valueOf(0));	
+		start();
 	}
 	
 	/**
 	 * Initializes pipe pair
 	 */
 	private void initializePipeSet() {                                        
-		double height = (double) (new Random()).nextInt(700) + 1;                //ISSUE: pipes not loading correctly EVERY time
+		double height = (double) (new Random()).nextInt(700) + 1;
+		
 		System.out.print("\nRandom Height Value: " + String.valueOf(height)); 
 		Pipe upPipe = new Pipe(true, height);
 		Pipe downPipe = new Pipe(false, height);
@@ -100,9 +100,22 @@ public class GameController { //no implements/extends for controller
 	private void start() { //not running... yet
 		gameplay = new AnimationTimer() {
 			public void handle(long now) { // gameplay loop
+				pipeSprite.clearRect(0, 0, 800, 800);
+				birdSprite.clearRect(0, 0, 800, 800);
 				if (running) {
+					generatePipes();
 					refreshPipes();
-					
+					refreshBird();
+					if (checkCollision())
+						running = false;
+					if (jumping) {
+						System.out.print("HI");
+					}
+						jump();
+				}
+				else {
+					//death screen
+					System.exit(0);
 				}
 			}
 		};
@@ -110,12 +123,20 @@ public class GameController { //no implements/extends for controller
 	}
 	
 	/**
-	 * Updates bird when jump detected
+	 * jump - Updates bird when jump detected
 	 */
 	private void jump() { //update bird class data
-		
+		bird.refresh(10);
+		jumping = false;
 	}
 	
+	private void generatePipes() {
+		if (pipes.get(0).getXPosition() == 0) {
+			pipes.remove(0);
+			pipes.remove(0);
+		}
+		initializePipeSet();
+	}
 	/**
 	 * refreshPipes - redraws pipes to screen
 	 */

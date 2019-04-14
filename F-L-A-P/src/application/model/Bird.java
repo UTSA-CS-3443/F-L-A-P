@@ -2,7 +2,6 @@ package application.model;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
 import javafx.scene.image.Image;
 
 /**
@@ -10,7 +9,7 @@ import javafx.scene.image.Image;
  *
  */
 public class Bird extends Sprite {	
-	public int GRAVITY = 50;
+	public final int GRAVITY = 50;
 	public Bird() {
 		try {
 			setImage(new Image(new FileInputStream("src/application/data/images/bird.png"), 55, 55, false, false));
