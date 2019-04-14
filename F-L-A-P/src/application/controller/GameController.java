@@ -96,7 +96,7 @@ public class GameController { //no implements/extends for controller
 	/**
 	 * start - Starts game
 	 */
-	private void start() { //not running... yet
+	private void start() {
 		gameplay = new AnimationTimer() {
 			public void handle(long now) { // gameplay loop
 				System.out.print("\n" + pipes.size());
