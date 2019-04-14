@@ -13,7 +13,7 @@ public class Pipe extends Sprite {
 	 * Pipe Variables
 	 */
 	private boolean up;
-	private int GAP = 150;
+	private final int GAP = 150;
 	
 	/**
 	 * Constructor for Pipe

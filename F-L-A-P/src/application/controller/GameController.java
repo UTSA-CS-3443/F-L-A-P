@@ -48,7 +48,7 @@ public class GameController { //no implements/extends for controller
 	@FXML
 	private void initialize() {
 		Scene scene = Main.stage.getScene(); 
-		scene.setOnKeyPressed(e -> { //Adding event listener to scene (Space to jump)
+		root.setOnKeyTyped(e -> { //Adding event listener to scene (Space to jump)
 			if (e.getCode().equals(KeyCode.SPACE))
 				jumping = true;
 		});
@@ -79,10 +79,9 @@ public class GameController { //no implements/extends for controller
 	private void initializePipeSet() {                                        
 		double height = (double) (new Random()).nextInt(700) + 1;
 		
-		System.out.print("\nRandom Height Value: " + String.valueOf(height)); 
 		Pipe upPipe = new Pipe(true, height);
 		Pipe downPipe = new Pipe(false, height);
-		System.out.print("\n down Y: " + String.valueOf(downPipe.getYPosition()) + "\nUp Y: " + String.valueOf(upPipe.getYPosition()));
+		// System.out.print("\n down Y: " + String.valueOf(downPipe.getYPosition()) + "\nUp Y: " + String.valueOf(upPipe.getYPosition()));
 		
 		upPipe.setXYVelocity(-.5, 0);
 		downPipe.setXYVelocity(-.5, 0);
@@ -100,6 +99,7 @@ public class GameController { //no implements/extends for controller
 	private void start() { //not running... yet
 		gameplay = new AnimationTimer() {
 			public void handle(long now) { // gameplay loop
+				System.out.print("\n" + pipes.size());
 				pipeSprite.clearRect(0, 0, 800, 800);
 				birdSprite.clearRect(0, 0, 800, 800);
 				if (running) {
@@ -109,9 +109,10 @@ public class GameController { //no implements/extends for controller
 					if (checkCollision())
 						running = false;
 					if (jumping) {
+						jump();
 						System.out.print("HI");
 					}
-						jump();
+					
 				}
 				else {
 					//death screen
@@ -125,13 +126,16 @@ public class GameController { //no implements/extends for controller
 	/**
 	 * jump - Updates bird when jump detected
 	 */
-	private void jump() { //update bird class data
-		bird.refresh(10);
+	private void jump() { 
+		bird.refresh(-1);
 		jumping = false;
 	}
 	
+	/**
+	 * generatePipes - Removes pipes off screen, determines when new pipe is generated  
+	 */
 	private void generatePipes() {
-		if (pipes.get(0).getXPosition() == 0) {
+		if (pipes.get(0).getXPosition() <= -pipes.get(0).getWidth()) {
 			pipes.remove(0);
 			pipes.remove(0);
 		}

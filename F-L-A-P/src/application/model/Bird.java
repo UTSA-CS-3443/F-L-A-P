@@ -9,7 +9,15 @@ import javafx.scene.image.Image;
  *
  */
 public class Bird extends Sprite {	
+	/**
+	 * Bird variables
+	 */
 	public final int GRAVITY = 50;
+	
+	/**
+	 * Constructor
+	 * Initializes bird
+	 */
 	public Bird() {
 		try {
 			setImage(new Image(new FileInputStream("src/application/data/images/bird.png"), 55, 55, false, false));
