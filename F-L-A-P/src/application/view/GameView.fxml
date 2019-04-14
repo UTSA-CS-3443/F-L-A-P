@@ -11,9 +11,10 @@
 
 <Group fx:id="root" focusTraversable="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.GameController">
    <children>
+      <Pane fx:id="backgroundPane" focusTraversable="true" prefHeight="800.0" prefWidth="800.0" />
       <ImageView fx:id="background" fitHeight="800.0" fitWidth="800.0" focusTraversable="false" pickOnBounds="true" preserveRatio="false" />
-      <Label fx:id="count" layoutX="400.0" layoutY="26.0" focusTraversable="false" />
-      <Canvas fx:id="pipesCanvas" height="800.0" width="800.0" focusTraversable="false" />
-      <Canvas fx:id="birdCanvas" height="800.0" layoutX="82.0" width="384.0" focusTraversable="false" />
+      <Label fx:id="count" focusTraversable="false" layoutX="400.0" layoutY="26.0" />
+      <Canvas fx:id="pipesCanvas" focusTraversable="false" height="800.0" width="800.0" />
+      <Canvas fx:id="birdCanvas" focusTraversable="false" height="800.0" layoutX="82.0" width="384.0" />
    </children>
 </Group>

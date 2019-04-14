@@ -15,6 +15,7 @@ import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
+import javafx.scene.layout.Pane;
 
 /**
  * @author Zachary Ellis (ebl533)
@@ -25,6 +26,7 @@ public class GameController { //no implements/extends for controller
 	 * GameController Variables
 	 */
 	@FXML private Group root;
+	@FXML private Pane backgroundPane;
 	@FXML private ImageView background;
 	@FXML private Canvas pipesCanvas;
 	@FXML private Canvas birdCanvas;
@@ -48,8 +50,9 @@ public class GameController { //no implements/extends for controller
 	@FXML
 	private void initialize() {
 		Scene scene = Main.stage.getScene(); 
-		root.setOnKeyTyped(e -> { //Adding event listener to scene (Space to jump)
+		backgroundPane.setOnKeyTyped(e -> { //Adding event listener to scene (Space to jump)
 			if (e.getCode().equals(KeyCode.SPACE))
+				System.out.print("hello");
 				jumping = true;
 		});
 		Main.stage.setScene(scene);
@@ -99,7 +102,7 @@ public class GameController { //no implements/extends for controller
 	private void start() {
 		gameplay = new AnimationTimer() {
 			public void handle(long now) { // gameplay loop
-				System.out.print("\n" + pipes.size());
+				//System.out.print("\n" + pipes.size());
 				pipeSprite.clearRect(0, 0, 800, 800);
 				birdSprite.clearRect(0, 0, 800, 800);
 				if (running) {
@@ -128,6 +131,7 @@ public class GameController { //no implements/extends for controller
 	 */
 	private void jump() { 
 		bird.refresh(-1);
+		bird.setXYVelocity(bird.getXVelocity(), bird.getYPosition()+50);
 		jumping = false;
 	}
 	
