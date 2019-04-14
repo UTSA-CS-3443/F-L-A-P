@@ -26,7 +26,7 @@ public class Main extends Application {
 	
 	@Override
 	public void start(Stage primaryStage) {
-		System.out.print(javafx.scene.text.Font.getFamilies());
+		//System.out.print(javafx.scene.text.Font.getFamilies());
 		//Add Application icon and convert from file to image
 		File iconFile = new File("data/images/icon.png");
 		Image icon = new Image(iconFile.toURI().toString());

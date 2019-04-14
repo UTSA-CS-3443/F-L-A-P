@@ -5,7 +5,7 @@ import javafx.scene.media.MediaPlayer;
 
 /**
  * @author Zachary Ellis (ebl533)
- *
+ * @author Jackson Dumas (llt190)
  */
 public class Sound {
 	/**
