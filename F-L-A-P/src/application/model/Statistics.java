@@ -16,7 +16,7 @@ public class Statistics {
 	//Singleton object of this class
 	private static Statistics singleInstance = null;
 	
-	private final String filePath = "data/statistics.txt";
+	private final String filePath = "src/application/data/statistics.txt";
 	private File file;
 	
 	private ArrayList<Integer> runs;

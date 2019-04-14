@@ -1,6 +1,5 @@
 package application.controller;
 
-import java.io.FileNotFoundException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Random;
@@ -21,7 +20,7 @@ import javafx.scene.input.KeyCode;
  * @author Zachary Ellis (ebl533)
  *
  */
-public class GameController {
+public class GameController { //no implements/extends for controller
 	/**
 	 * GameController Variables
 	 */
@@ -34,7 +33,7 @@ public class GameController {
 	private ArrayList<Pipe> pipes;
 	private GraphicsContext pipeSprite, birdSprite;
 	private AnimationTimer gameplay; //for game loop
-	private long gameTime; //required for game loop
+	private boolean running, jumping;
 	
 	/**
 	 * Constructor for GameController
@@ -42,47 +41,47 @@ public class GameController {
 	public GameController() {
 		bird = new Bird();
 		pipes = new ArrayList<Pipe>();
+		running = true;
+		jumping = false;
 	}
 
 	@FXML
-	public void initialize() {
-		try {
-			Scene scene = Main.stage.getScene(); 
-			scene.setOnKeyPressed(e -> { //Adding event listener to scene (Space to jump)
-				if (e.getCode().equals(KeyCode.SPACE)) 
-					jump();
-			});
-			Main.stage.setScene(scene);
-			Main.stage.show();
-			
-			background.setId("background");
-			initializeGame();
-		} catch (FileNotFoundException e1) {
-			e1.printStackTrace();
-		}		
+	private void initialize() {
+		Scene scene = Main.stage.getScene(); 
+		root.setOnKeyTyped(e -> { //Adding event listener to scene (Space to jump)
+			if (e.getCode().equals(KeyCode.SPACE))
+				jumping = true;
+		});
+		Main.stage.setScene(scene);
+		Main.stage.show();
+		background.setId("background");
+		
+		initializeGame();		
 	}
 	
 	/**
 	 * Loads assets onto screen and sets up game
-	 * @throws FileNotFoundException Background Image not Found
 	 */
-	private void initializeGame() throws FileNotFoundException {
+	private void initializeGame() {		
 		pipeSprite = pipesCanvas.getGraphicsContext2D();
 		birdSprite = birdCanvas.getGraphicsContext2D();
 		
+		refreshBird();
 		initializePipeSet();
-		initializeBird();
-		
-		count.setText(String.valueOf(0));		
+
+		count.setText(String.valueOf(0));	
+		start();
 	}
 	
 	/**
 	 * Initializes pipe pair
 	 */
-	private void initializePipeSet() {
-		double gap = (double) (new Random()).nextInt(800) + 1;
-		Pipe upPipe = new Pipe(true, gap);
-		Pipe downPipe = new Pipe(false, gap - 45);
+	private void initializePipeSet() {                                        
+		double height = (double) (new Random()).nextInt(700) + 1;
+		
+		Pipe upPipe = new Pipe(true, height);
+		Pipe downPipe = new Pipe(false, height);
+		// System.out.print("\n down Y: " + String.valueOf(downPipe.getYPosition()) + "\nUp Y: " + String.valueOf(upPipe.getYPosition()));
 		
 		upPipe.setXYVelocity(-.5, 0);
 		downPipe.setXYVelocity(-.5, 0);
@@ -95,23 +94,75 @@ public class GameController {
 	}
 	
 	/**
-	 * Initializes bird at beginning of game
+	 * start - Starts game
 	 */
-	private void initializeBird() {
+	private void start() {
+		gameplay = new AnimationTimer() {
+			public void handle(long now) { // gameplay loop
+				System.out.print("\n" + pipes.size());
+				pipeSprite.clearRect(0, 0, 800, 800);
+				birdSprite.clearRect(0, 0, 800, 800);
+				if (running) {
+					generatePipes();
+					refreshPipes();
+					refreshBird();
+					if (checkCollision())
+						running = false;
+					if (jumping) {
+						jump();
+						System.out.print("HI");
+					}
+					
+				}
+				else {
+					//death screen
+					System.exit(0);
+				}
+			}
+		};
+		gameplay.start();
+	}
+	
+	/**
+	 * jump - Updates bird when jump detected
+	 */
+	private void jump() { 
+		bird.refresh(-1);
+		jumping = false;
+	}
+	
+	/**
+	 * generatePipes - Removes pipes off screen, determines when new pipe is generated  
+	 */
+	private void generatePipes() {
+		if (pipes.get(0).getXPosition() <= -pipes.get(0).getWidth()) {
+			pipes.remove(0);
+			pipes.remove(0);
+		}
+		initializePipeSet();
+	}
+	/**
+	 * refreshPipes - redraws pipes to screen
+	 */
+	private void refreshPipes() {
+		for (Pipe p : pipes) {
+			pipeSprite.drawImage(p.getImage(), p.getXPosition(), p.getYPosition());
+			p.refresh(10);
+		}
+	}
+	
+	/**
+	 * refreshBird - initializes/redraws bird to screen
+	 */
+	private void refreshBird() {
 		birdSprite.drawImage(bird.getImage(), bird.getXPosition(), bird.getYPosition());
 	}
 	
-	private void start() {
-		gameplay = new AnimationTimer() {
-			public void handle(long currentTime) {
-				//Do game loop here
-			}
-		};
-	}
 	/**
-	 * Updates bird when jump detected
+	 * checkCollision - checks for collisions
+	 * @return Boolean if bird hit pipe
 	 */
-	private void jump() {
-		
+	private boolean checkCollision() { //floor at ~650 Y Coordinate
+		return false;
 	}
 }

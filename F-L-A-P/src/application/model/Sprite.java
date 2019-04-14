@@ -15,8 +15,8 @@ public class Sprite {
 	private double yPosition;
 	private double xVelocity;
 	private double yVelocity;
-	private double width;
-	private double height;
+	private int width;
+	private int height;
 	
 	/**
 	 * Constructor
@@ -69,6 +69,13 @@ public class Sprite {
 	}
 	
 	/**
+	 * @param fps - simulates frames per second, higher number = less fps
+	 */
+	public void refresh(double fps) {
+		setXYPosition(xPosition += (fps * xVelocity), yPosition += (fps * yVelocity));
+	}
+	
+	/**
 	 * @return the xVelocity
 	 */
 	public double getXVelocity() {
@@ -89,7 +96,6 @@ public class Sprite {
 	public void setXYVelocity(double x, double y) {
 		xVelocity = x;
 		yVelocity = y;
-		return;
 	}
 	
 	/**
@@ -99,20 +105,19 @@ public class Sprite {
 	public void addXYVelocity(double x, double y) {
 		xVelocity += x;
 		yVelocity += y;
-		return;
 	}
 
 	/**
 	 * @return the width
 	 */
-	public double getWidth() {
+	public int getWidth() {
 		return width;
 	}
 
 	/**
 	 * @return the height
 	 */
-	public double getHeight() {
+	public int getHeight() {
 		return height;
 	}
 	
@@ -120,7 +125,7 @@ public class Sprite {
 	 * @param width Image width
 	 * @param height Image height
 	 */
-	public void setWidthHeight(double width, double height) {
+	public void setWidthHeight(int width, int height) {
 		this.width = width;
 		this.height = height;
 	}

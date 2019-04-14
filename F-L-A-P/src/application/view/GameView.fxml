@@ -9,11 +9,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Group fx:id="root" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.GameController">
+<Group fx:id="root" focusTraversable="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.GameController">
    <children>
-      <ImageView fx:id="background" fitHeight="800.0" fitWidth="800.0" pickOnBounds="true" preserveRatio="false" />
-      <Canvas fx:id="pipesCanvas" height="800.0" width="800.0" />
-      <Canvas fx:id="birdCanvas" height="200.0" layoutX="33.0" layoutY="213.0" width="200.0" />
-      <Label fx:id="count" layoutX="400.0" layoutY="26.0" />
+      <ImageView fx:id="background" fitHeight="800.0" fitWidth="800.0" focusTraversable="false" pickOnBounds="true" preserveRatio="false" />
+      <Label fx:id="count" layoutX="400.0" layoutY="26.0" focusTraversable="false" />
+      <Canvas fx:id="pipesCanvas" height="800.0" width="800.0" focusTraversable="false" />
+      <Canvas fx:id="birdCanvas" height="800.0" layoutX="82.0" width="384.0" focusTraversable="false" />
    </children>
 </Group>
