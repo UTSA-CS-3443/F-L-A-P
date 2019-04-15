@@ -19,7 +19,7 @@ import javafx.scene.layout.Pane;
 
 /**
  * @author Zachary Ellis (ebl533)
- *
+ * @author Jackson Dumas (llt190)
  */
 public class GameController { //no implements/extends for controller
 	/**
@@ -102,20 +102,20 @@ public class GameController { //no implements/extends for controller
 	private void start() {
 		gameplay = new AnimationTimer() {
 			public void handle(long now) { // gameplay loop
-				//System.out.print("\n" + pipes.size());
 				pipeSprite.clearRect(0, 0, 800, 800);
 				birdSprite.clearRect(0, 0, 800, 800);
 				if (running) {
 					generatePipes();
 					refreshPipes();
 					refreshBird();
-					if (checkCollision())
-						running = false;
 					if (jumping) {
 						jump();
-						System.out.print("HI");
-					}
+					}else {
+						fall();
 					
+					if (checkCollision())
+						running = false;
+					}
 				}
 				else {
 					//death screen
@@ -131,10 +131,16 @@ public class GameController { //no implements/extends for controller
 	 */
 	private void jump() { 
 		bird.refresh(-1);
-		bird.setXYVelocity(bird.getXVelocity(), bird.getYPosition()+50);
+		bird.setXYPosition(bird.getXPosition(), bird.getYPosition()-50);
 		jumping = false;
 	}
-	
+	/**
+	 * fall - Updates bird when not jumping
+	 */
+	private void fall() {
+		bird.refresh(-1);
+		bird.setXYPosition(bird.getXPosition(), bird.getYPosition()+60);
+	}
 	/**
 	 * generatePipes - Removes pipes off screen, determines when new pipe is generated  
 	 */
