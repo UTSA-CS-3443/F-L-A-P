@@ -135,6 +135,7 @@ public class GameController { //no implements/extends for controller
 		bird.refresh(-1);
 		bird.setXYPosition(bird.getXPosition(), bird.getYPosition()-200);
 		drawRotatedImage(birdSprite, bird.getImage(), -45, bird.getXPosition(), bird.getYPosition());
+		drawRotatedImage(birdSprite, bird.getImage(), 0, bird.getXPosition(), bird.getYPosition());
 		jumping = false;
 	}
 	/**
