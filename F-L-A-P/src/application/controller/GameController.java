@@ -13,9 +13,11 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
+import javafx.scene.transform.Rotate;
 
 /**
  * @author Zachary Ellis (ebl533)
@@ -131,7 +133,8 @@ public class GameController { //no implements/extends for controller
 	 */
 	private void jump() { 
 		bird.refresh(-1);
-		bird.setXYPosition(bird.getXPosition(), bird.getYPosition()-50);
+		bird.setXYPosition(bird.getXPosition(), bird.getYPosition()-200);
+		drawRotatedImage(birdSprite, bird.getImage(), -45, bird.getXPosition(), bird.getYPosition());
 		jumping = false;
 	}
 	/**
@@ -139,7 +142,8 @@ public class GameController { //no implements/extends for controller
 	 */
 	private void fall() {
 		bird.refresh(-1);
-		bird.setXYPosition(bird.getXPosition(), bird.getYPosition()+60);
+		bird.setXYPosition(bird.getXPosition(), bird.getYPosition()+55);
+		drawRotatedImage(birdSprite, bird.getImage(), 45, bird.getXPosition(), bird.getYPosition());
 	}
 	/**
 	 * generatePipes - Removes pipes off screen, determines when new pipe is generated  
@@ -175,4 +179,32 @@ public class GameController { //no implements/extends for controller
 	private boolean checkCollision() { //floor at ~650 Y Coordinate
 		return false;
 	}
+	
+	/**
+	 * rotate - rotates the bird sprite
+	 * @param gc - the graphics context
+	 * @param angle - the angle to rotate
+	 * @param px coordinate in pixels, relative to the canvas
+     * @param py coordinate in pixels, relative to the canvas
+	 */
+	private void rotate(GraphicsContext gc, double angle, double px, double py) {
+        Rotate r = new Rotate(angle, px, py);
+        gc.setTransform(r.getMxx(), r.getMyx(), r.getMxy(), r.getMyy(), r.getTx(), r.getTy());
+    }
+	
+	/**
+     * Draws an image on a graphics context.
+     *
+     * @param gc the graphics context the image is to be drawn on.
+     * @param the image to be drawn
+     * @param the angle of rotation.
+     * @param x coordinate in pixels, relative to the canvas
+     * @param y coordinate in pixels, relative to the canvas
+     */
+    private void drawRotatedImage(GraphicsContext gc, Image image, double angle, double tlpx, double tlpy) {
+        gc.save(); // saves the current state on stack, including the current transform
+        rotate(gc, angle, tlpx + image.getWidth() / 2, tlpy + image.getHeight() / 2);
+        gc.drawImage(image, tlpx, tlpy);
+        gc.restore(); // back to original state (before rotation)
+    }
 }
