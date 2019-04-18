@@ -41,6 +41,7 @@ public class GameController{ //no implements/extends for controller
 	private AnimationTimer gameplay; //for game loop
 	private boolean running, jumping;
 	//Thread t1 = new Thread(new Runnable() {public void run() {}});
+	private final long createdMillis = System.currentTimeMillis();
 	
 	/**
 	 * Constructor for GameController
@@ -145,7 +146,7 @@ public class GameController{ //no implements/extends for controller
 	/**
 	 * jump - Updates bird when jump detected
 	 */
-	private synchronized void jump() { 
+	private void jump() { 
 		bird.refresh(-1);
 		bird.setXYPosition(bird.getXPosition(), bird.getYPosition()-200);
 		drawRotatedImage(birdSprite, bird.getImage(), -45, bird.getXPosition(), bird.getYPosition());
@@ -168,16 +169,18 @@ public class GameController{ //no implements/extends for controller
 			pipes.remove(0);
 			pipes.remove(0);
 		}
-		initializePipeSet();
+		if(this.getAgeInSeconds() > .5) {
+			initializePipeSet();
+		}
 	}
 	/**
 	 * refreshPipes - redraws pipes to screen
 	 */
 	private void refreshPipes() {
-		for (Pipe p : pipes) {
-			pipeSprite.drawImage(p.getImage(), p.getXPosition(), p.getYPosition());
-			p.refresh(10);
-		}
+		pipeSprite.drawImage(pipes.get(0).getImage(), pipes.get(0).getXPosition(), pipes.get(0).getYPosition());
+		pipeSprite.drawImage(pipes.get(1).getImage(), pipes.get(1).getXPosition(), pipes.get(1).getYPosition());
+		pipes.get(0).refresh(10);
+		pipes.get(1).refresh(10);
 	}
 	
 	/**
@@ -201,6 +204,11 @@ public class GameController{ //no implements/extends for controller
 		else{
 			return false;
 		}
+	}
+	
+	public int getAgeInSeconds() {
+		long nowMillis = System.currentTimeMillis();
+	    return (int)((nowMillis - this.createdMillis) / 1000);
 	}
 	
 	/**
