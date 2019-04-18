@@ -15,5 +15,30 @@
          <Button layoutX="293.0" layoutY="375.0" mnemonicParsing="false" onAction="#optionsButton" prefHeight="49.0" prefWidth="215.0" text="OPTIONS" />
          <Button layoutX="293.0" layoutY="475.0" mnemonicParsing="false" onAction="#statisticsButton" prefHeight="49.0" prefWidth="215.0" text="RECORDS" />
          <Button layoutX="293.0" layoutY="575.0" mnemonicParsing="false" onAction="#quit" prefHeight="49.0" prefWidth="215.0" text="QUIT" />
+      <ImageView fitHeight="150.0" fitWidth="163.0" layoutX="549.0" layoutY="518.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../bin/application/data/images/cloud2.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="95.0" fitWidth="81.0" layoutX="110.0" layoutY="290.0" pickOnBounds="true" preserveRatio="true" rotate="-30.0">
+         <image>
+            <Image url="@../../../bin/application/data/images/bird1.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="260.0" fitWidth="41.0" layoutX="56.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../bin/application/data/images/pipe_down.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="340.0" fitWidth="41.0" layoutX="56.0" layoutY="463.0" pickOnBounds="true">
+         <image>
+            <Image url="@../../../bin/application/data/images/pipe_up.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="150.0" fitWidth="157.0" layoutX="617.0" layoutY="238.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../../../bin/application/data/images/cloud2.png" />
+         </image>
+      </ImageView>
    </children>
 </AnchorPane>
