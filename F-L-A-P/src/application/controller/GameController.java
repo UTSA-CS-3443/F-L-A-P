@@ -129,7 +129,9 @@ public class GameController{ //no implements/extends for controller
 						Parent root = FXMLLoader.load(getClass().getResource("../view/DeathScreen.fxml"));
 						Main.stage.setResizable(false);
 						root.setId("background");
-						Main.stage.setScene(new Scene(root,800,800));
+						Scene scene = new Scene(root, 800,800);
+						scene.getStylesheets().add(getClass().getResource("../DeathScreen.css").toExternalForm());
+						Main.stage.setScene(scene);
 						Main.stage.show();
 						
 					} catch(Exception e) {

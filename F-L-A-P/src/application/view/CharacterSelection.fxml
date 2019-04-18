@@ -8,19 +8,23 @@
 
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.CharacterSelectionController">
    <children>
-      <Button fx:id="chara" layoutX="178.0" layoutY="493.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" />
-      <Button fx:id="chara" layoutX="479.0" layoutY="493.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" />
-      <Button fx:id="chara" layoutX="103.0" layoutY="227.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" />
-      <Button layoutX="325.0" layoutY="227.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" />
-      <Button layoutX="554.0" layoutY="227.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" />
-      <Label alignment="CENTER" layoutX="82.0" layoutY="400.0" prefHeight="68.0" prefWidth="192.0" text="Label" textAlignment="CENTER" />
-      <Label alignment="CENTER" layoutX="458.0" layoutY="662.0" prefHeight="68.0" prefWidth="192.0" text="Label" textAlignment="CENTER" />
-      <Label alignment="CENTER" layoutX="157.0" layoutY="662.0" prefHeight="68.0" prefWidth="192.0" text="Label" textAlignment="CENTER" />
-      <Label alignment="CENTER" layoutX="533.0" layoutY="400.0" prefHeight="68.0" prefWidth="192.0" text="Label" textAlignment="CENTER" />
-      <Label alignment="CENTER" layoutX="304.0" layoutY="400.0" prefHeight="68.0" prefWidth="192.0" text="Label" textAlignment="CENTER" />
-      <Button fx:id="options" layoutX="668.0" layoutY="14.0" mnemonicParsing="false" onAction="#options" prefHeight="40.0" prefWidth="111.0" text="Options" />
-      <Button fx:id="mainMenu" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#mainMenu" prefHeight="40.0" prefWidth="111.0" text="Main Menu" />
-      <Button fx:id="play" layoutX="332.0" layoutY="706.0" mnemonicParsing="false" onAction="#play" prefHeight="55.0" prefWidth="126.0" text="F L A P">
+      <RadioButton fx:id="chara4" layoutX="176.0" layoutY="460.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0">
+         <toggleGroup>
+            <ToggleGroup fx:id="charaButtons" />
+         </toggleGroup></RadioButton>
+      <RadioButton fx:id="chara5" layoutX="477.0" layoutY="460.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" toggleGroup="$charaButtons" />
+      <RadioButton fx:id="chara1" layoutX="104.0" layoutY="232.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" toggleGroup="$charaButtons" />
+      <RadioButton fx:id="chara2" layoutX="326.0" layoutY="232.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" toggleGroup="$charaButtons" />
+      <RadioButton fx:id="chara3" layoutX="555.0" layoutY="232.0" mnemonicParsing="false" prefHeight="150.0" prefWidth="150.0" toggleGroup="$charaButtons" />
+      <Label alignment="CENTER" layoutX="80.0" layoutY="382.0" prefHeight="68.0" prefWidth="192.0" text="Zach" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="455.0" layoutY="610.0" prefHeight="68.0" prefWidth="192.0" text="Tyler" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="154.0" layoutY="610.0" prefHeight="68.0" prefWidth="192.0" text="Logan" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="531.0" layoutY="382.0" prefHeight="68.0" prefWidth="192.0" text="Kevin" textAlignment="CENTER" />
+      <Label alignment="CENTER" layoutX="302.0" layoutY="382.0" prefHeight="68.0" prefWidth="192.0" text="Ivy" textAlignment="CENTER" />
+      <Button fx:id="options" layoutX="575.0" layoutY="54.0" mnemonicParsing="false" onAction="#options" prefHeight="40.0" prefWidth="150.0" text="Options" />
+      <Button fx:id="mainMenu" layoutX="82.0" layoutY="54.0" mnemonicParsing="false" onAction="#mainMenu" prefHeight="40.0" prefWidth="150.0" text="Main Menu" />
+      <Button fx:id="play" layoutX="337.0" layoutY="678.0" mnemonicParsing="false" onAction="#play" prefHeight="55.0" prefWidth="126.0" text="F L A P">
       </Button>
+      <Label fx:id="charaPrompt" alignment="CENTER" layoutX="86.0" layoutY="103.0" prefHeight="117.0" prefWidth="631.0" text="Select your character:" />
    </children>
 </AnchorPane>

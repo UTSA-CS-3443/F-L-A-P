@@ -13,6 +13,7 @@ import javafx.scene.image.Image;
  * Contains main method, program driver
  * @author Jackson Dumas (llt190)
  * @author Zachary Ellis (ebl533)
+ * @author Ivy Vasquez Sandoval (egi444)
  *
  */
 
@@ -21,6 +22,7 @@ public class Main extends Application {
 	 * Main variables
 	 */
 	public static Stage stage;
+	public static String charaSelectedPath;
 	
 	@Override
 	public void start(Stage primaryStage) {

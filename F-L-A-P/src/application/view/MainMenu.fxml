@@ -10,7 +10,7 @@
 
 <AnchorPane layoutX="1.0" prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.MainMenuController">
    <children>
-      <Label fx:id="title" layoutX="320.0" layoutY="75.0" prefHeight="53.0" prefWidth="161.0" text="F L A P" textAlignment="CENTER" />
+      <Label fx:id="title" alignment="CENTER" layoutX="171.0" layoutY="71.0" prefHeight="155.0" prefWidth="459.0" text="F L A P" textAlignment="CENTER" />
          <Button layoutX="293.0" layoutY="275.0" mnemonicParsing="false" onAction="#playButton" prefHeight="49.0" prefWidth="215.0" text="PLAY" />
          <Button layoutX="293.0" layoutY="375.0" mnemonicParsing="false" onAction="#optionsButton" prefHeight="49.0" prefWidth="215.0" text="OPTIONS" />
          <Button layoutX="293.0" layoutY="475.0" mnemonicParsing="false" onAction="#statisticsButton" prefHeight="49.0" prefWidth="215.0" text="RECORDS" />

@@ -43,20 +43,11 @@
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
                <children>
-                  <Button fx:id="MainMenu" mnemonicParsing="false" onAction="#mainMenu" style="-fx-background-color: #99FF00; -fx-border-width: 3; -fx-border-color: #cdcdcd; -fx-border-radius: 10; -fx-background-radius: 15;" text="Main Menu" GridPane.halignment="CENTER">
-                     <font>
-                        <Font name="SansSerif Regular" size="24.0" />
-                     </font>
+                  <Button mnemonicParsing="false" onAction="#mainMenu" text="Main Menu" GridPane.halignment="CENTER">
                   </Button>
-                  <Button fx:id="PlayAgain" mnemonicParsing="false" onAction="#playAgain" style="-fx-background-color: #99FF00; -fx-border-width: 3; -fx-border-color: #cdcdcd; -fx-border-radius: 10; -fx-background-radius: 15;" text="Play Again" GridPane.columnIndex="1" GridPane.halignment="CENTER">
-                     <font>
-                        <Font name="SansSerif Regular" size="24.0" />
-                     </font>
+                  <Button mnemonicParsing="false" onAction="#playAgain" text="Play Again" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                   </Button>
-                  <Button fx:id="Quit" mnemonicParsing="false" onAction="#quit" style="-fx-background-color: #99FF00; -fx-border-width: 3; -fx-border-color: #cdcdcd; -fx-border-radius: 10; -fx-background-radius: 15;" text="Quit" GridPane.columnIndex="2" GridPane.halignment="CENTER">
-                     <font>
-                        <Font name="SansSerif Regular" size="24.0" />
-                     </font>
+                  <Button mnemonicParsing="false" onAction="#quit" text="Quit" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                   </Button>
                </children>
                <BorderPane.margin>

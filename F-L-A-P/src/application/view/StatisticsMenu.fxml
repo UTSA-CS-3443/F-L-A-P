@@ -9,8 +9,8 @@
 
 <AnchorPane prefHeight="800.0" prefWidth="800.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.StatisticsMenuController">
    <children>
-      <Button layoutX="250.0" layoutY="735.0" mnemonicParsing="false" onAction="#mainMenu" prefHeight="43.0" prefWidth="135.0" text="BACK" />
-      <Button layoutX="415.0" layoutY="735.0" mnemonicParsing="false" onAction="#resetButton" prefHeight="43.0" prefWidth="135.0" text="RESET" />
+      <Button layoutX="133.0" layoutY="635.0" mnemonicParsing="false" onAction="#mainMenu" prefHeight="43.0" prefWidth="135.0" text="BACK" />
+      <Button layoutX="524.0" layoutY="635.0" mnemonicParsing="false" onAction="#resetButton" prefHeight="43.0" prefWidth="135.0" text="RESET" />
       <Label fx:id="statisticsError" layoutX="599.0" layoutY="778.0" />
       <Label layoutX="75.0" layoutY="25.0" prefHeight="45.0" prefWidth="300.0" text="Longest Run" />
       <Label fx:id="longestRunLabel" layoutX="400.0" layoutY="25.0" />
