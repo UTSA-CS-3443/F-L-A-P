@@ -3,7 +3,8 @@
 }
 
 #character {
-	-fx-background-image: url("data/images/bird.png");
+	-fx-background-image: url("data/images/icon.png");
+	-fx-background-size: contain;
 	-fx-background-color: #28c401;
 }
 
