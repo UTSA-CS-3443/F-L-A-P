@@ -8,7 +8,9 @@ import application.model.Bird;
 import application.model.Pipe;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Group;
+import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -23,7 +25,7 @@ import javafx.scene.transform.Rotate;
  * @author Zachary Ellis (ebl533)
  * @author Jackson Dumas (llt190)
  */
-public class GameController { //no implements/extends for controller
+public class GameController{ //no implements/extends for controller
 	/**
 	 * GameController Variables
 	 */
@@ -38,6 +40,7 @@ public class GameController { //no implements/extends for controller
 	private GraphicsContext pipeSprite, birdSprite;
 	private AnimationTimer gameplay; //for game loop
 	private boolean running, jumping;
+	//Thread t1 = new Thread(new Runnable() {public void run() {}});
 	
 	/**
 	 * Constructor for GameController
@@ -120,8 +123,19 @@ public class GameController { //no implements/extends for controller
 					}
 				}
 				else {
-					//death screen
-					System.exit(0);
+					gameplay.stop();
+					try {
+						Parent root = FXMLLoader.load(getClass().getResource("../view/DeathScreen.fxml"));
+						Main.stage.setResizable(false);
+						root.setId("background");
+						Main.stage.setScene(new Scene(root,800,800));
+						Main.stage.show();
+						
+					} catch(Exception e) {
+						System.out.println("Error loading the files.");
+						e.printStackTrace();
+					}
+					//System.exit(0);
 				}
 			}
 		};
@@ -131,7 +145,7 @@ public class GameController { //no implements/extends for controller
 	/**
 	 * jump - Updates bird when jump detected
 	 */
-	private void jump() { 
+	private synchronized void jump() { 
 		bird.refresh(-1);
 		bird.setXYPosition(bird.getXPosition(), bird.getYPosition()-200);
 		drawRotatedImage(birdSprite, bird.getImage(), -45, bird.getXPosition(), bird.getYPosition());
@@ -178,7 +192,15 @@ public class GameController { //no implements/extends for controller
 	 * @return Boolean if bird hit pipe
 	 */
 	private boolean checkCollision() { //floor at ~650 Y Coordinate
-		return false;
+		if(bird.getYPosition() >= 800)
+			return true;
+		//if(bird.getXPosition() == pipes.getXPosition() || bird.getYPosition() == pipes.getYPosition())
+			//return true; 
+		if(bird.getYPosition() <= 0)
+			return true;
+		else{
+			return false;
+		}
 	}
 	
 	/**
@@ -208,4 +230,5 @@ public class GameController { //no implements/extends for controller
         gc.drawImage(image, tlpx, tlpy);
         gc.restore(); // back to original state (before rotation)
     }
+
 }

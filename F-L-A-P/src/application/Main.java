@@ -13,9 +13,6 @@ import javafx.scene.image.Image;
  * Contains main method, program driver
  * @author Jackson Dumas (llt190)
  * @author Zachary Ellis (ebl533)
- * @author
- * @author
- * @author
  *
  */
 
@@ -24,21 +21,6 @@ public class Main extends Application {
 	 * Main variables
 	 */
 	public static Stage stage;
-	
-//	public void start(Stage primaryStage) {
-//		try {
-//			Parent root = FXMLLoader.load(getClass().getResource("view/DeathScreen.fxml"));
-//			primaryStage.setResizable(false);
-//			primaryStage.setScene(new Scene(root,800,800));
-//			primaryStage.show();
-//			
-//			stage = primaryStage;
-//			
-//		} catch(Exception e) {
-//			System.out.println("Error loading the files.");
-//			e.printStackTrace();
-//		}
-//	}
 	
 	@Override
 	public void start(Stage primaryStage) {
