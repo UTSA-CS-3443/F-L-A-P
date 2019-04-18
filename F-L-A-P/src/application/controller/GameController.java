@@ -41,6 +41,7 @@ public class GameController{ //no implements/extends for controller
 	private AnimationTimer gameplay; //for game loop
 	private boolean running, jumping;
 	//Thread t1 = new Thread(new Runnable() {public void run() {}});
+	private final long createdMillis = System.currentTimeMillis();
 	
 	/**
 	 * Constructor for GameController
@@ -88,7 +89,7 @@ public class GameController{ //no implements/extends for controller
 		double height = (double) (new Random()).nextInt(700) + 1;
 		
 		Pipe upPipe = new Pipe(true, height);
-		Pipe downPipe = new Pipe(false, height);
+		Pipe downPipe = new Pipe(false, height-100);
 		// System.out.print("\n down Y: " + String.valueOf(downPipe.getYPosition()) + "\nUp Y: " + String.valueOf(upPipe.getYPosition()));
 		
 		upPipe.setXYVelocity(-.5, 0);
@@ -145,7 +146,7 @@ public class GameController{ //no implements/extends for controller
 	/**
 	 * jump - Updates bird when jump detected
 	 */
-	private synchronized void jump() { 
+	private void jump() { 
 		bird.refresh(-1);
 		bird.setXYPosition(bird.getXPosition(), bird.getYPosition()-200);
 		drawRotatedImage(birdSprite, bird.getImage(), -45, bird.getXPosition(), bird.getYPosition());
@@ -168,16 +169,18 @@ public class GameController{ //no implements/extends for controller
 			pipes.remove(0);
 			pipes.remove(0);
 		}
-		initializePipeSet();
+		if(this.getAgeInSeconds() > .5) {
+			initializePipeSet();
+		}
 	}
 	/**
 	 * refreshPipes - redraws pipes to screen
 	 */
 	private void refreshPipes() {
-		for (Pipe p : pipes) {
-			pipeSprite.drawImage(p.getImage(), p.getXPosition(), p.getYPosition());
-			p.refresh(10);
-		}
+		pipeSprite.drawImage(pipes.get(0).getImage(), pipes.get(0).getXPosition(), pipes.get(0).getYPosition());
+		pipeSprite.drawImage(pipes.get(1).getImage(), pipes.get(1).getXPosition(), pipes.get(1).getYPosition());
+		pipes.get(0).refresh(10);
+		pipes.get(1).refresh(10);
 	}
 	
 	/**
@@ -191,16 +194,21 @@ public class GameController{ //no implements/extends for controller
 	 * checkCollision - checks for collisions
 	 * @return Boolean if bird hit pipe
 	 */
-	private boolean checkCollision() { //floor at ~650 Y Coordinate
+	private boolean checkCollision() { //floor at ~800 Y Coordinate
 		if(bird.getYPosition() >= 800)
 			return true;
 		//if(bird.getXPosition() == pipes.getXPosition() || bird.getYPosition() == pipes.getYPosition())
 			//return true; 
-		if(bird.getYPosition() <= 0)
-			return true;
-		else{
+		if(bird.getYPosition() <= 0) {
+			bird.setXYPosition(bird.getXPosition(), 0);
 			return false;
 		}
+		return false;
+	}
+	
+	public int getAgeInSeconds() {
+		long nowMillis = System.currentTimeMillis();
+	    return (int)((nowMillis - this.createdMillis) / 1000);
 	}
 	
 	/**
