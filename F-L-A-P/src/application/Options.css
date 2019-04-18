@@ -30,5 +30,6 @@
 .label {
 	-fx-font-family: "Comic Sans MS", cursive, sans-serif;
 	-fx-font-size: 24px;
+	-fx-text-fill: white;
 }
 

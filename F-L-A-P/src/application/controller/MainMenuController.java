@@ -7,7 +7,6 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
-import javafx.stage.Stage;
 
 /**
  * MainMenuController.java
@@ -46,15 +45,15 @@ public class MainMenuController {
 	 * @param event Options button clicked
 	 */
 	public void optionsButton(ActionEvent event) {
+		Main.optionParentMenuFXML = "../view/MainMenu.fxml";
+		Main.optionParentMenuCSS = "../MainMenu.css";
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../view/OptionsMenu.fxml"));
-			Stage stage = new Stage();
 			root.setId("background");
 			Scene scene = new Scene(root, 800, 800);
 			scene.getStylesheets().add(getClass().getResource("../Options.css").toExternalForm());
-			stage.setScene(scene);
-			stage.setResizable(false);
-			stage.showAndWait();
+			Main.stage.setScene(scene);
+			Main.stage.show();
 		} catch(Exception e) {
 			e.printStackTrace();
 		}

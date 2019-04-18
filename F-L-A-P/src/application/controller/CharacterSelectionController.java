@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.RadioButton;
 import javafx.scene.control.ToggleGroup;
-import javafx.stage.Stage;
 
 /**
  * CharacterSelectionController.java
@@ -75,17 +74,17 @@ public class CharacterSelectionController {
 	 * @param e Options button pressed
 	 */
 	public void options(ActionEvent e) {
+		Main.optionParentMenuFXML = "../view/CharacterSelection.fxml";
+		Main.optionParentMenuCSS = "../CharacterSelection.css";
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../view/OptionsMenu.fxml"));
-			Stage stage = new Stage();
 			root.setId("background");
 			Scene scene = new Scene(root, 800, 800);
 			scene.getStylesheets().add(getClass().getResource("../Options.css").toExternalForm());
-			stage.setScene(scene);
-			stage.setResizable(false);
-			stage.showAndWait();
-		} catch (Exception e1) {
-			e1.printStackTrace();
+			Main.stage.setScene(scene);
+			Main.stage.show();
+		} catch(Exception e2) {
+			e2.printStackTrace();
 		}
 	}
 	

@@ -8,7 +8,8 @@ import javafx.stage.Stage;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.image.Image;
-import javafx.scene.media.AudioClip;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 
 /**
  * Main.java
@@ -25,16 +26,18 @@ public class Main extends Application {
 	 */
 	public static Stage stage;
 	public static String charaSelectedPath;
-	public static AudioClip audio;
+	public static String optionParentMenuFXML;
+	public static String optionParentMenuCSS;
+	public static MediaPlayer mp;
 	
 	@Override
 	public void start(Stage primaryStage) {
 		
 		// Play Music in background
-	    
-	    audio = new AudioClip(getClass().getResource("data/music.mp3").toExternalForm());
-        audio.setCycleCount(100);
-        audio.play();
+		
+		Media mp3 = new Media(new File("bin/application/data/music.mp3").toURI().toString());
+		mp = new MediaPlayer(mp3);
+		mp.play();
         
 		//System.out.print(javafx.scene.text.Font.getFamilies());
 		//Add Application icon and convert from file to image
