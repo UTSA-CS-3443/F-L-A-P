@@ -197,13 +197,17 @@ public class GameController{ //no implements/extends for controller
 	 * @return Boolean if bird hit pipe
 	 */
 	private boolean checkCollision() { //floor at ~800 Y Coordinate
-		if(bird.getYPosition() >= 800)
-			return true;
-		//if(bird.getXPosition() == pipes.getXPosition() || bird.getYPosition() == pipes.getYPosition())
-			//return true; 
-		if(bird.getYPosition() <= 0) {
-			bird.setXYPosition(bird.getXPosition(), 0);
+		for(Pipe p: pipes){
+			if(bird.getYPosition() >= 800)
+				return true;
+			if(bird.getBounds() == p.getBounds())
+				return true;
+			//if(bird.getXPosition() == pipes.getXPosition() || bird.getYPosition() == pipes.getYPosition())
+				//return true; 
+			if(bird.getYPosition() <= 0) {
+				bird.setXYPosition(bird.getXPosition(), 0);
 			return false;
+			}
 		}
 		return false;
 	}
