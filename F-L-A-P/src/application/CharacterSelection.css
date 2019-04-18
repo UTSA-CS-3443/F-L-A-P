@@ -6,125 +6,31 @@
 	-fx-background-image: url("data/images/725e5dc00ba49c240cd489e7b87e0496.jpg");
 }
 
-#chara1 {
-	-fx-cursor:hand;
+#chara1{
 	-fx-background-image: url("data/images/icon1.png");
 	-fx-background-size: contain;
-	-fx-background-color: #28c401;
-	-fx-opacity: 0.5;
-	-fx-background-radius: 10;
-	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 30, 0, 0, 0);
-	-fx-border-color: white;
-	-fx-border-width: 2;
-	-fx-border-style: solid;
-	-fx-border-radius: 10;
 }
 
-#chara1:hover{
-	-fx-opacity: 1;
-	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 60, 0, 0, 0);
-}
-
-#chara1:selected {
-	-fx-opacity: 1;
-	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 60, 0, 0, 0);
-}
-
-#chara2 {
-	-fx-cursor:hand;
+#chara2{
 	-fx-background-image: url("data/images/icon2.png");
 	-fx-background-size: contain;
-	-fx-background-color: #28c401;
-	-fx-opacity: 0.5;
-	-fx-background-radius: 10;
-	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 30, 0, 0, 0);
-	-fx-border-color: white;
-	-fx-border-width: 2;
-	-fx-border-style: solid;
-	-fx-border-radius: 10;
 }
 
-#chara2:hover{
-	-fx-opacity: 1;
-	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 60, 0, 0, 0);
-}
-
-#chara2:selected {
-	-fx-opacity: 1;
-	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 60, 0, 0, 0);
-}
-
-#chara3 {
-	-fx-cursor:hand;
+#chara3{
 	-fx-background-image: url("data/images/icon3.png");
 	-fx-background-size: contain;
-	-fx-background-color: #28c401;
-	-fx-opacity: 0.5;
-	-fx-background-radius: 10;
-	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 30, 0, 0, 0);
-	-fx-border-color: white;
-	-fx-border-width: 2;
-	-fx-border-style: solid;
-	-fx-border-radius: 10;
 }
 
-#chara3:hover{
-	-fx-opacity: 1;
-	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 60, 0, 0, 0);
-}
-
-#chara3:selected {
-	-fx-opacity: 1;
-	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 60, 0, 0, 0);
-}
-
-#chara4 {
-	-fx-cursor:hand;
+#chara4{
 	-fx-background-image: url("data/images/icon4.png");
 	-fx-background-size: contain;
-	-fx-background-color: #28c401;
-	-fx-opacity: 0.5;
-	-fx-background-radius: 10;
-	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 30, 0, 0, 0);
-	-fx-border-color: white;
-	-fx-border-width: 2;
-	-fx-border-style: solid;
-	-fx-border-radius: 10;
 }
 
-#chara4:hover{
-	-fx-opacity: 1;
-	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 60, 0, 0, 0);
-}
-
-#chara4:selected {
-	-fx-opacity: 1;
-	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 60, 0, 0, 0);
-}
-
-#chara5 {
-	-fx-cursor:hand;
+#chara5{
 	-fx-background-image: url("data/images/icon5.png");
 	-fx-background-size: contain;
-	-fx-background-color: #28c401;
-	-fx-opacity: 0.5;
-	-fx-background-radius: 10;
-	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 30, 0, 0, 0);
-	-fx-border-color: white;
-	-fx-border-width: 2;
-	-fx-border-style: solid;
-	-fx-border-radius: 10;
 }
 
-#chara5:hover{
-	-fx-opacity: 1;
-	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 60, 0, 0, 0);
-}
-
-#chara5:selected {
-	-fx-opacity: 1;
-	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 60, 0, 0, 0);
-}
 
 #play {
 	-fx-cursor: hand;
@@ -151,6 +57,28 @@
 	-fx-font-size: 36px;
 	-fx-text-fill: white;
 	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 30, 0, 0, 0);
+}
+
+.toggle-button {
+	-fx-cursor:hand;
+	-fx-background-color: #28c401;
+	-fx-opacity: 0.5;
+	-fx-background-radius: 10;
+	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 30, 0, 0, 0);
+	-fx-border-color: white;
+	-fx-border-width: 2;
+	-fx-border-style: solid;
+	-fx-border-radius: 10;
+}
+
+.toggle-button:hover{
+	-fx-opacity: 1;
+	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 60, 0, 0, 0);
+}
+
+.toggle-button:selected {
+	-fx-opacity: 1;
+	-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 60, 0, 0, 0);
 }
 
 .button {
