@@ -6,6 +6,12 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 
+/**
+ * 
+ * @author Ivy Vasquez Sandoval (egi444)
+ *
+ */
+
 public class DeathScreenController{
 	
 	public void playAgain(ActionEvent e) {
