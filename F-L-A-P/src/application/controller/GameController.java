@@ -89,7 +89,7 @@ public class GameController{ //no implements/extends for controller
 		double height = (double) (new Random()).nextInt(700) + 1;
 		
 		Pipe upPipe = new Pipe(true, height);
-		Pipe downPipe = new Pipe(false, height);
+		Pipe downPipe = new Pipe(false, height-100);
 		// System.out.print("\n down Y: " + String.valueOf(downPipe.getYPosition()) + "\nUp Y: " + String.valueOf(upPipe.getYPosition()));
 		
 		upPipe.setXYVelocity(-.5, 0);
@@ -194,16 +194,16 @@ public class GameController{ //no implements/extends for controller
 	 * checkCollision - checks for collisions
 	 * @return Boolean if bird hit pipe
 	 */
-	private boolean checkCollision() { //floor at ~650 Y Coordinate
+	private boolean checkCollision() { //floor at ~800 Y Coordinate
 		if(bird.getYPosition() >= 800)
 			return true;
 		//if(bird.getXPosition() == pipes.getXPosition() || bird.getYPosition() == pipes.getYPosition())
 			//return true; 
-		if(bird.getYPosition() <= 0)
-			return true;
-		else{
+		if(bird.getYPosition() <= 0) {
+			bird.setXYPosition(bird.getXPosition(), 0);
 			return false;
 		}
+		return false;
 	}
 	
 	public int getAgeInSeconds() {
