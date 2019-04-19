@@ -1,6 +1,8 @@
 package application.controller;
 
 import application.Main;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -18,7 +20,25 @@ public class OptionsMenuController {
 	
 	@FXML private Slider slider;
 	
+	/**
+	 * Sets the slider to the correct position per the volume level
+	 */
 	public void initialize() {
+		slider.setMin(0.0);
+		slider.setMax(1.0);
+		slider.setValue(Main.mp.getVolume());
+	}
+	
+	/**
+	 * Sets the volume for the music dynamically when the slider is used.
+	 */
+	public void change() {
+		slider.valueProperty().addListener(new ChangeListener<Number>() {
+			public void changed(ObservableValue<? extends Number> volume,
+					Number oldVolume, Number newVolume) {
+				Main.mp.setVolume(Double.parseDouble(String.format("%.2f", newVolume)));
+			}
+		});
 	}
 	
 	/**

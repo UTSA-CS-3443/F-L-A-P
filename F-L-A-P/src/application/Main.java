@@ -38,6 +38,7 @@ public class Main extends Application {
 		Media mp3 = new Media(new File("bin/application/data/music.mp3").toURI().toString());
 		mp = new MediaPlayer(mp3);
 		mp.play();
+		mp.setVolume(0.5);
         
 		//System.out.print(javafx.scene.text.Font.getFamilies());
 		//Add Application icon and convert from file to image

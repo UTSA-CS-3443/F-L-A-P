@@ -92,7 +92,9 @@ public class CharacterSelectionController {
 	 * @param e Play button pressed
 	 */
 	public void play(ActionEvent e) {
-		if(charaButtons.getSelectedToggle().equals(chara1)) {
+		if(charaButtons.getSelectedToggle()==null) {
+			return;
+		}else if(charaButtons.getSelectedToggle().equals(chara1)) {
 			Main.charaSelectedPath = "src/application/data/images/bird1.png";
 		}else if(charaButtons.getSelectedToggle().equals(chara2)) {
 			Main.charaSelectedPath = "src/application/data/images/bird2.png";
@@ -103,6 +105,7 @@ public class CharacterSelectionController {
 		}else if(charaButtons.getSelectedToggle().equals(chara5)) {
 			Main.charaSelectedPath = "src/application/data/images/bird5.png";
 		}
+		
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../view/GameView.fxml"));
 			root.setId("background");

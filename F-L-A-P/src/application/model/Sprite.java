@@ -129,4 +129,11 @@ public class Sprite {
 		this.width = width;
 		this.height = height;
 	}
+	
+	/**
+	* @return a rectangle (area) bound of the sprite
+	*/
+	public Rectangle getBounds() {
+		return new Rectangle(xPosition, yPosition, width, height);
+	}
 }
