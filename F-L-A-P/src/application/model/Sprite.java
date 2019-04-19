@@ -1,6 +1,7 @@
 package application.model;
 
 import javafx.scene.image.Image;
+import javafx.scene.shape.Rectangle;
 
 /**
  * @author Zachary Ellis(ebl533)
