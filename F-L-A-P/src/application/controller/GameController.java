@@ -29,6 +29,7 @@ public class GameController{ //no implements/extends for controller
 	/**
 	 * GameController Variables
 	 */
+	public int score = 0;
 	@FXML private Group root;
 	@FXML private Pane backgroundPane;
 	@FXML private ImageView background;
@@ -40,7 +41,6 @@ public class GameController{ //no implements/extends for controller
 	private GraphicsContext pipeSprite, birdSprite;
 	private AnimationTimer gameplay; //for game loop
 	private boolean running, jumping;
-	//Thread t1 = new Thread(new Runnable() {public void run() {}});
 	private final long createdMillis;
 	
 	/**
@@ -91,7 +91,6 @@ public class GameController{ //no implements/extends for controller
 		
 		Pipe upPipe = new Pipe(true, height);
 		Pipe downPipe = new Pipe(false, height-100);
-		// System.out.print("\n down Y: " + String.valueOf(downPipe.getYPosition()) + "\nUp Y: " + String.valueOf(upPipe.getYPosition()));
 		
 		upPipe.setXYVelocity(-.5, 0);
 		downPipe.setXYVelocity(-.5, 0);
@@ -123,6 +122,7 @@ public class GameController{ //no implements/extends for controller
 					if (checkCollision())
 						running = false;
 					}
+					incrementScore();
 				}
 				else {
 					gameplay.stop();
@@ -139,7 +139,6 @@ public class GameController{ //no implements/extends for controller
 						System.out.println("Error loading the files.");
 						e.printStackTrace();
 					}
-					//System.exit(0);
 				}
 			}
 		};
@@ -153,7 +152,7 @@ public class GameController{ //no implements/extends for controller
 		bird.refresh(-1);
 		bird.setXYPosition(bird.getXPosition(), bird.getYPosition()-100);
 		drawRotatedImage(birdSprite, bird.getImage(), -45, bird.getXPosition(), bird.getYPosition());
-		drawRotatedImage(birdSprite, bird.getImage(), 0, bird.getXPosition(), bird.getYPosition());
+		//drawRotatedImage(birdSprite, bird.getImage(), 0, bird.getXPosition(), bird.getYPosition());
 		jumping = false;
 	}
 	
@@ -212,12 +211,24 @@ public class GameController{ //no implements/extends for controller
 		}
 		return false;
 	}
-	
+	/**
+	 * getAgeInSeconds
+	 * @return the elapsed time
+	 */
 	public int getAgeInSeconds() {
 		long nowMillis = System.currentTimeMillis();
 	    return (int)((nowMillis - this.createdMillis) / 1000);
 	}
 	
+	/**
+	 * incrementScore - adds to the score and sets the text
+	 */
+	public void incrementScore() {
+		if(bird.getXPosition() > pipes.get(0).getXPosition()) {
+			score++;
+		}
+		count.setText(String.valueOf(score));
+	}
 	/**
 	 * rotate - rotates the bird sprite
 	 * @param gc - the graphics context
