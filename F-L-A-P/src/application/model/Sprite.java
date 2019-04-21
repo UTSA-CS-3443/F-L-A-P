@@ -1,7 +1,7 @@
 package application.model;
 
+import javafx.geometry.Rectangle2D;
 import javafx.scene.image.Image;
-import javafx.scene.shape.Rectangle;
 
 /**
  * @author Zachary Ellis(ebl533)
@@ -134,7 +134,7 @@ public class Sprite {
 	/**
 	* @return a rectangle (area) bound of the sprite
 	*/
-	public Rectangle getBounds() {
-		return new Rectangle(xPosition, yPosition, width, height);
+	public Rectangle2D getBounds() {
+		return new Rectangle2D(xPosition, yPosition, width, height);
 	}
 }

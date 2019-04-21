@@ -41,7 +41,7 @@ public class GameController{ //no implements/extends for controller
 	private AnimationTimer gameplay; //for game loop
 	private boolean running, jumping;
 	//Thread t1 = new Thread(new Runnable() {public void run() {}});
-	private final long createdMillis = System.currentTimeMillis();
+	private final long createdMillis;
 	
 	/**
 	 * Constructor for GameController
@@ -51,6 +51,7 @@ public class GameController{ //no implements/extends for controller
 		pipes = new ArrayList<Pipe>();
 		running = true;
 		jumping = false;
+		createdMillis = System.currentTimeMillis();
 	}
 
 	@FXML
@@ -200,7 +201,7 @@ public class GameController{ //no implements/extends for controller
 		for(Pipe p: pipes){
 			if(bird.getYPosition() >= 800)
 				return true;
-			if(bird.getBounds() == p.getBounds())
+			if(bird.getBounds().intersects(p.getBounds()))
 				return true;
 			//if(bird.getXPosition() == pipes.getXPosition() || bird.getYPosition() == pipes.getYPosition())
 				//return true; 
