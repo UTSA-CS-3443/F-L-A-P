@@ -35,7 +35,7 @@ public class Main extends Application {
 		
 		// Play Music in background
 		
-		Media mp3 = new Media(new File("bin/application/data/music.mp3").toURI().toString());
+		Media mp3 = new Media(new File("src/application/data/music.mp3").toURI().toString());
 		mp = new MediaPlayer(mp3);
 		mp.play();
 		mp.setVolume(0.5);

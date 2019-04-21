@@ -27,11 +27,11 @@ public class Pipe extends Sprite {
 				yValue = 200;
 			if (up) {
 				setImage(new Image(new FileInputStream("src/application/data/images/pipe_up.png"), 70, 600, false, false));
-				setXYPosition(600, yValue); //Testing parameters ACTUAL: (800, yValue)
+				setXYPosition(800, yValue); //Testing parameters ACTUAL: (800, yValue)
 			}
 			else {
 				setImage(new Image(new FileInputStream("src/application/data/images/pipe_down.png"), 70, 600, false, false));
-				setXYPosition(600, yValue - (600 + GAP)); //Testing parameters ACTUAL: (800, yValue - (600 + GAP))
+				setXYPosition(800, yValue - (600 + GAP)); //Testing parameters ACTUAL: (800, yValue - (600 + GAP))
 			}
 			setWidthHeight((int) getImage().getWidth(), (int) getImage().getHeight());
 			setXYVelocity(-.5, 0);

@@ -151,11 +151,12 @@ public class GameController{ //no implements/extends for controller
 	 */
 	private void jump() { 
 		bird.refresh(-1);
-		bird.setXYPosition(bird.getXPosition(), bird.getYPosition()-200);
+		bird.setXYPosition(bird.getXPosition(), bird.getYPosition()-100);
 		drawRotatedImage(birdSprite, bird.getImage(), -45, bird.getXPosition(), bird.getYPosition());
 		drawRotatedImage(birdSprite, bird.getImage(), 0, bird.getXPosition(), bird.getYPosition());
 		jumping = false;
 	}
+	
 	/**
 	 * fall - Updates bird when not jumping
 	 */
@@ -164,6 +165,7 @@ public class GameController{ //no implements/extends for controller
 		bird.setXYPosition(bird.getXPosition(), bird.getYPosition()+55);
 		drawRotatedImage(birdSprite, bird.getImage(), 45, bird.getXPosition(), bird.getYPosition());
 	}
+	
 	/**
 	 * generatePipes - Removes pipes off screen, determines when new pipe is generated  
 	 */
@@ -172,18 +174,18 @@ public class GameController{ //no implements/extends for controller
 			pipes.remove(0);
 			pipes.remove(0);
 		}
-		if(this.getAgeInSeconds() > .5) {
+		
+		if (pipes.get(pipes.size()-1).getXPosition() <= 400)
 			initializePipeSet();
-		}
 	}
 	/**
 	 * refreshPipes - redraws pipes to screen
 	 */
 	private void refreshPipes() {
-		pipeSprite.drawImage(pipes.get(0).getImage(), pipes.get(0).getXPosition(), pipes.get(0).getYPosition());
-		pipeSprite.drawImage(pipes.get(1).getImage(), pipes.get(1).getXPosition(), pipes.get(1).getYPosition());
-		pipes.get(0).refresh(10);
-		pipes.get(1).refresh(10);
+		for (Pipe p : pipes) {
+			pipeSprite.drawImage(p.getImage(), p.getXPosition(), p.getYPosition());
+			p.refresh(10);
+		}
 	}
 	
 	/**
@@ -203,11 +205,9 @@ public class GameController{ //no implements/extends for controller
 				return true;
 			if(bird.getBounds().intersects(p.getBounds()))
 				return true;
-			//if(bird.getXPosition() == pipes.getXPosition() || bird.getYPosition() == pipes.getYPosition())
-				//return true; 
 			if(bird.getYPosition() <= 0) {
 				bird.setXYPosition(bird.getXPosition(), 0);
-			return false;
+				return false;
 			}
 		}
 		return false;
