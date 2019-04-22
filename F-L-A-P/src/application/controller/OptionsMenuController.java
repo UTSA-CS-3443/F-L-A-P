@@ -17,7 +17,9 @@ import javafx.scene.control.Slider;
  * @author Ivy Vasquez Sandoval (egi444)
  */
 public class OptionsMenuController {
-	
+	/**
+	 * OptionsMenuController member variables
+	 */
 	@FXML private Slider slider;
 	
 	/**

@@ -45,13 +45,13 @@ public class MainMenuController {
 	 * @param event Options button clicked
 	 */
 	public void optionsButton(ActionEvent event) {
-		Main.optionParentMenuFXML = "../view/MainMenu.fxml";
-		Main.optionParentMenuCSS = "../MainMenu.css";
 		try {
 			Parent root = FXMLLoader.load(getClass().getResource("../view/OptionsMenu.fxml"));
 			root.setId("background");
 			Scene scene = new Scene(root, 800, 800);
 			scene.getStylesheets().add(getClass().getResource("../Options.css").toExternalForm());
+			Main.optionParentMenuFXML = "../view/MainMenu.fxml";
+			Main.optionParentMenuCSS = "../MainMenu.css";
 			Main.stage.setScene(scene);
 			Main.stage.show();
 		} catch(Exception e) {

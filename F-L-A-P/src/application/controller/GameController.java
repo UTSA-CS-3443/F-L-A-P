@@ -6,6 +6,7 @@ import java.util.Random;
 import application.Main;
 import application.model.Bird;
 import application.model.Pipe;
+import application.model.Statistics;
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -43,15 +44,28 @@ public class GameController{ //no implements/extends for controller
 	
 	/**
 	 * Constructor for GameController
+	 * @param birdFile Path to bird file
 	 */
-	public GameController() {
-		bird = new Bird();
+	public GameController(String birdFile) {
+		bird = new Bird(birdFile);
 		pipes = new ArrayList<Pipe>();
 		running = true;
 		jumping = false;
 		createdMillis = System.currentTimeMillis();
 	}
 
+	/**
+	 * Constructor for GameController
+	 * @param bird Sprite from previous run
+	 */
+	public GameController(Bird bird) {
+		this.bird = bird.reset();
+		pipes = new ArrayList<Pipe>();
+		running = true;
+		jumping = false;
+		createdMillis = System.currentTimeMillis();
+	}
+	
 	@FXML
 	private void initialize() {
 		Scene scene = Main.stage.getScene(); 
@@ -109,8 +123,10 @@ public class GameController{ //no implements/extends for controller
 				pipeSprite.clearRect(0, 0, 800, 800);
 				birdSprite.clearRect(0, 0, 800, 800);
 				if (running) {
-					if (checkCollision())
+					if (pipes.get(0).checkCollision(bird) || pipes.get(1).checkCollision(bird)) {
 						running = false;
+						return;
+					}
 					if (jumping) 
 						jumping = bird.jump(birdSprite);
 					else 
@@ -122,8 +138,12 @@ public class GameController{ //no implements/extends for controller
 					}
 				else {
 					gameplay.stop();
+					Statistics.getInstance().addRun(Integer.parseInt(count.getText()));
 					try {
-						Parent root = FXMLLoader.load(getClass().getResource("../view/DeathScreen.fxml"));
+						FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/DeathScreen.fxml"));
+						Parent root = loader.load();
+						DeathScreenController dsc = loader.getController();
+						dsc.bird = bird;
 						Main.stage.setResizable(false);
 						root.setId("background");
 						Scene scene = new Scene(root, 800,800);
@@ -173,24 +193,6 @@ public class GameController{ //no implements/extends for controller
 	}
 	
 	/**
-	 * checkCollision - checks for collisions
-	 * @return Boolean if bird hit pipe
-	 */
-	private boolean checkCollision() { //floor at ~800 Y Coordinate
-		for(Pipe p: pipes){
-			if(bird.getYPosition() >= 800)
-				return true;
-			if(bird.getBounds().intersects(p.getBounds()))
-				return true;
-			if(bird.getYPosition() <= 0) {
-				bird.setXYPosition(bird.getXPosition(), 0);
-				return false;
-			}
-		}
-		return false;
-	}
-	
-	/**
 	 * getAgeInSeconds
 	 * @return the elapsed time
 	 */
@@ -202,7 +204,7 @@ public class GameController{ //no implements/extends for controller
 	/**
 	 * incrementScore - adds to the score and sets the text
 	 */
-	public void incrementScore() {
+	private void incrementScore() {
 		if(!passPipe && (bird.getXPosition() > pipes.get(0).getXPosition())) {
 			score++;
 			passPipe = true;

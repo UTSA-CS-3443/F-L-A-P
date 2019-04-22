@@ -91,23 +91,28 @@ public class CharacterSelectionController {
 	/**
 	 * @param e Play button pressed
 	 */
-	public void play(ActionEvent e) {
-		if(charaButtons.getSelectedToggle()==null) {
-			return;
-		}else if(charaButtons.getSelectedToggle().equals(chara1)) {
-			Main.charaSelectedPath = "src/application/data/images/bird1.png";
-		}else if(charaButtons.getSelectedToggle().equals(chara2)) {
-			Main.charaSelectedPath = "src/application/data/images/bird2.png";
-		}else if(charaButtons.getSelectedToggle().equals(chara3)) {
-			Main.charaSelectedPath = "src/application/data/images/bird3.png";
-		}else if(charaButtons.getSelectedToggle().equals(chara4)) {
-			Main.charaSelectedPath = "src/application/data/images/bird4.png";
-		}else if(charaButtons.getSelectedToggle().equals(chara5)) {
-			Main.charaSelectedPath = "src/application/data/images/bird5.png";
-		}
-		
+	public void play(ActionEvent e) {		
 		try {
-			Parent root = FXMLLoader.load(getClass().getResource("../view/GameView.fxml"));
+			GameController game;
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("../view/GameView.fxml"));
+			
+			if(charaButtons.getSelectedToggle()==null) 
+				return;
+			else if(charaButtons.getSelectedToggle().equals(chara1)) 
+				game = new GameController("src/application/data/images/bird1.png");
+			else if(charaButtons.getSelectedToggle().equals(chara2)) 
+				game = new GameController("src/application/data/images/bird2.png");
+			else if(charaButtons.getSelectedToggle().equals(chara3)) 
+				game = new GameController("src/application/data/images/bird3.png");
+			else if(charaButtons.getSelectedToggle().equals(chara4)) 
+				game = new GameController("src/application/data/images/bird4.png");
+			else if(charaButtons.getSelectedToggle().equals(chara5)) 
+				game = new GameController("src/application/data/images/bird5.png");
+			else 
+				throw new Exception();
+			
+			loader.setController(game);
+			Parent root = loader.load();
 			root.setId("background");
 			Scene scene = new Scene(root, 800, 800);
 			scene.getStylesheets().add(getClass().getResource("../GameScreen.css").toExternalForm());

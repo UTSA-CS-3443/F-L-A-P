@@ -40,10 +40,25 @@ public class Pipe extends Sprite {
 		}
 	}
 	
-	public boolean detectCollision(Bird bird) {
+	/**
+	 * checkCollision - checks for collisions
+	 * @param bird Bird to test
+	 * @return Boolean if bird hit pipe
+	 */
+	public boolean checkCollision(Bird bird) { //floor at ~800 Y Coordinate
+		if(bird.getYPosition() >= 800)
+			return true;
+		if(bird.getBounds().intersects(getBounds()))
+			return true;
+		if(bird.getYPosition() <= 0) 
+			bird.setXYPosition(bird.getXPosition(), 0);
 		return false;
 	}
 	
+	/**
+	 * getFace - checks orientation
+	 * @return boolean if facing up
+	 */
 	public boolean getFace() {
 		return up;
 	}

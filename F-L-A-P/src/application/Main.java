@@ -25,7 +25,6 @@ public class Main extends Application {
 	 * Main variables
 	 */
 	public static Stage stage;
-	public static String charaSelectedPath;
 	public static String optionParentMenuFXML;
 	public static String optionParentMenuCSS;
 	public static MediaPlayer mp;

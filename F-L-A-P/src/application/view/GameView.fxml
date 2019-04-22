@@ -9,7 +9,7 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<Group fx:id="root" focusTraversable="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.controller.GameController">
+<Group fx:id="root" focusTraversable="true" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane fx:id="backgroundPane" focusTraversable="true" prefHeight="800.0" prefWidth="800.0" />
       <ImageView fx:id="background" fitHeight="800.0" fitWidth="800.0" focusTraversable="false" pickOnBounds="true" preserveRatio="false" />

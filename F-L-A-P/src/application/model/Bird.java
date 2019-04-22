@@ -2,8 +2,6 @@ package application.model;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
-
-import application.Main;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
@@ -15,15 +13,15 @@ public class Bird extends Sprite {
 	/**
 	 * Bird variables
 	 */
-	public final int GRAVITY = 50;
+	private final int GRAVITY = 50;
 	
 	/**
 	 * Constructor
 	 * Initializes bird
 	 */
-	public Bird() {
+	public Bird(String birdFile) {
 		try {
-			setImage(new Image(new FileInputStream(Main.charaSelectedPath), 55, 55, false, false));
+			setImage(new Image(new FileInputStream(birdFile), 55, 55, false, false));
 			setWidthHeight((int) getImage().getWidth(), (int) getImage().getHeight());
 			setXYPosition(75, 400);
 			setXYVelocity(0, GRAVITY);
@@ -50,5 +48,15 @@ public class Bird extends Sprite {
 		refresh(-1);
 		setXYPosition(getXPosition(), getYPosition()+55);
 		drawRotatedImage(birdSprite, getImage(), 45, getXPosition(), getYPosition());
+	}
+	
+	/**
+	 * reset - resets bird position
+	 * @return self
+	 */
+	public Bird reset() {
+		setXYPosition(75, 400);
+		setXYVelocity(0, GRAVITY);
+		return this;
 	}
 }
