@@ -15,11 +15,9 @@ import javafx.scene.Scene;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.Label;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyCode;
 import javafx.scene.layout.Pane;
-import javafx.scene.transform.Rotate;
 
 /**
  * @author Zachary Ellis (ebl533)
@@ -111,19 +109,17 @@ public class GameController{ //no implements/extends for controller
 				pipeSprite.clearRect(0, 0, 800, 800);
 				birdSprite.clearRect(0, 0, 800, 800);
 				if (running) {
+					if (checkCollision())
+						running = false;
+					if (jumping) 
+						jumping = bird.jump(birdSprite);
+					else 
+						bird.fall(birdSprite);
 					generatePipes();
 					refreshPipes();
 					refreshBird();
-					if (jumping) {
-						jump();
-					}else {
-						fall();
-					
-					if (checkCollision())
-						running = false;
-					}
 					incrementScore();
-				}
+					}
 				else {
 					gameplay.stop();
 					try {
@@ -146,26 +142,6 @@ public class GameController{ //no implements/extends for controller
 	}
 	
 	/**
-	 * jump - Updates bird when jump detected
-	 */
-	private void jump() { 
-		bird.refresh(-1);
-		bird.setXYPosition(bird.getXPosition(), bird.getYPosition()-100);
-		drawRotatedImage(birdSprite, bird.getImage(), -45, bird.getXPosition(), bird.getYPosition());
-		//drawRotatedImage(birdSprite, bird.getImage(), 0, bird.getXPosition(), bird.getYPosition());
-		jumping = false;
-	}
-	
-	/**
-	 * fall - Updates bird when not jumping
-	 */
-	private void fall() {
-		bird.refresh(-1);
-		bird.setXYPosition(bird.getXPosition(), bird.getYPosition()+55);
-		drawRotatedImage(birdSprite, bird.getImage(), 45, bird.getXPosition(), bird.getYPosition());
-	}
-	
-	/**
 	 * generatePipes - Removes pipes off screen, determines when new pipe is generated  
 	 */
 	private void generatePipes() {
@@ -178,6 +154,7 @@ public class GameController{ //no implements/extends for controller
 		if (pipes.get(pipes.size()-1).getXPosition() <= 400)
 			initializePipeSet();
 	}
+	
 	/**
 	 * refreshPipes - redraws pipes to screen
 	 */
@@ -212,6 +189,7 @@ public class GameController{ //no implements/extends for controller
 		}
 		return false;
 	}
+	
 	/**
 	 * getAgeInSeconds
 	 * @return the elapsed time
@@ -231,32 +209,4 @@ public class GameController{ //no implements/extends for controller
 		}
 		count.setText(String.valueOf(score));
 	}
-	/**
-	 * rotate - rotates the bird sprite
-	 * @param gc - the graphics context
-	 * @param angle - the angle to rotate
-	 * @param px coordinate in pixels, relative to the canvas
-     * @param py coordinate in pixels, relative to the canvas
-	 */
-	private void rotate(GraphicsContext gc, double angle, double px, double py) {
-        Rotate r = new Rotate(angle, px, py);
-        gc.setTransform(r.getMxx(), r.getMyx(), r.getMxy(), r.getMyy(), r.getTx(), r.getTy());
-    }
-	
-	/**
-     * Draws an image on a graphics context.
-     *
-     * @param gc the graphics context the image is to be drawn on.
-     * @param the image to be drawn
-     * @param the angle of rotation.
-     * @param x coordinate in pixels, relative to the canvas
-     * @param y coordinate in pixels, relative to the canvas
-     */
-    private void drawRotatedImage(GraphicsContext gc, Image image, double angle, double tlpx, double tlpy) {
-        gc.save(); // saves the current state on stack, including the current transform
-        rotate(gc, angle, tlpx + image.getWidth() / 2, tlpy + image.getHeight() / 2);
-        gc.drawImage(image, tlpx, tlpy);
-        gc.restore(); // back to original state (before rotation)
-    }
-
 }
