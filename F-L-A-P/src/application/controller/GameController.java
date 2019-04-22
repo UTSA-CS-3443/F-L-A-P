@@ -40,7 +40,7 @@ public class GameController{ //no implements/extends for controller
 	private ArrayList<Pipe> pipes;
 	private GraphicsContext pipeSprite, birdSprite;
 	private AnimationTimer gameplay; //for game loop
-	private boolean running, jumping;
+	private boolean running, jumping, passPipe;
 	private final long createdMillis;
 	
 	/**
@@ -170,6 +170,7 @@ public class GameController{ //no implements/extends for controller
 	 */
 	private void generatePipes() {
 		if (pipes.get(0).getXPosition() <= -pipes.get(0).getWidth()) {
+			passPipe = false;
 			pipes.remove(0);
 			pipes.remove(0);
 		}
@@ -224,8 +225,9 @@ public class GameController{ //no implements/extends for controller
 	 * incrementScore - adds to the score and sets the text
 	 */
 	public void incrementScore() {
-		if(bird.getXPosition() > pipes.get(0).getXPosition()) {
+		if(!passPipe && (bird.getXPosition() > pipes.get(0).getXPosition())) {
 			score++;
+			passPipe = true;
 		}
 		count.setText(String.valueOf(score));
 	}
