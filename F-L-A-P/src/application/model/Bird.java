@@ -4,6 +4,7 @@ import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 
 import application.Main;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
 
 /**
@@ -29,5 +30,25 @@ public class Bird extends Sprite {
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
 		}
+	}
+	
+	/**
+	 * jump - Updates bird when jump detected
+	 */
+	public boolean jump(GraphicsContext birdSprite) { 
+		refresh(-1);
+		setXYPosition(getXPosition(), getYPosition()-100);
+		drawRotatedImage(birdSprite, getImage(), -45, getXPosition(), getYPosition());
+		///drawRotatedImage(birdSprite, bird.getImage(), 0, bird.getXPosition(), bird.getYPosition());
+		return false;
+	}
+	
+	/**
+	 * fall - Updates bird when not jumping
+	 */
+	public void fall(GraphicsContext birdSprite) {
+		refresh(-1);
+		setXYPosition(getXPosition(), getYPosition()+55);
+		drawRotatedImage(birdSprite, getImage(), 45, getXPosition(), getYPosition());
 	}
 }

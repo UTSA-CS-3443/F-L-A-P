@@ -1,7 +1,9 @@
 package application.model;
 
 import javafx.geometry.Rectangle2D;
+import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.image.Image;
+import javafx.scene.transform.Rotate;
 
 /**
  * @author Zachary Ellis(ebl533)
@@ -31,6 +33,41 @@ public class Sprite {
 		width = 0;
 		height = 0;
 	}
+	
+	/**
+	 * @param fps - simulates frames per second, higher number = less fps
+	 */
+	public void refresh(double fps) {
+		setXYPosition(xPosition += (fps * xVelocity), yPosition += (fps * yVelocity));
+	}
+	
+	/**
+     * Draws an image on a graphics context.
+     *
+     * @param gc the graphics context the image is to be drawn on.
+     * @param the image to be drawn
+     * @param the angle of rotation.
+     * @param x coordinate in pixels, relative to the canvas
+     * @param y coordinate in pixels, relative to the canvas
+     */
+    public void drawRotatedImage(GraphicsContext gc, Image image, double angle, double tlpx, double tlpy) {
+        gc.save(); // saves the current state on stack, including the current transform
+        rotate(gc, angle, tlpx + image.getWidth() / 2, tlpy + image.getHeight() / 2);
+        gc.drawImage(image, tlpx, tlpy);
+        gc.restore(); // back to original state (before rotation)
+    }
+    
+	/**
+	 * rotate - rotates the bird sprite
+	 * @param gc - the graphics context
+	 * @param angle - the angle to rotate
+	 * @param px coordinate in pixels, relative to the canvas
+     * @param py coordinate in pixels, relative to the canvas
+	 */
+	private void rotate(GraphicsContext gc, double angle, double px, double py) {
+        Rotate r = new Rotate(angle, px, py);
+        gc.setTransform(r.getMxx(), r.getMyx(), r.getMxy(), r.getMyy(), r.getTx(), r.getTy());
+    }
 
 	/**
 	 * @return the image
@@ -67,13 +104,6 @@ public class Sprite {
 	public void setXYPosition(double x, double y) {
 		xPosition = x;
 		yPosition = y;
-	}
-	
-	/**
-	 * @param fps - simulates frames per second, higher number = less fps
-	 */
-	public void refresh(double fps) {
-		setXYPosition(xPosition += (fps * xVelocity), yPosition += (fps * yVelocity));
 	}
 	
 	/**

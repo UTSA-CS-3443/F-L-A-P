@@ -31,7 +31,7 @@ public class Pipe extends Sprite {
 			}
 			else {
 				setImage(new Image(new FileInputStream("src/application/data/images/pipe_down.png"), 70, 600, false, false));
-				setXYPosition(800, yValue - (600 + GAP)); //Testing parameters ACTUAL: (800, yValue - (600 + GAP))
+				setXYPosition(800, (yValue - (600 + GAP))); //Testing parameters ACTUAL: (800, yValue - (600 + GAP))
 			}
 			setWidthHeight((int) getImage().getWidth(), (int) getImage().getHeight());
 			setXYVelocity(-.5, 0);
