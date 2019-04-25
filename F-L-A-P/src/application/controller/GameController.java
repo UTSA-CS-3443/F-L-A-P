@@ -23,6 +23,7 @@ import javafx.scene.layout.Pane;
 /**
  * @author Zachary Ellis (ebl533)
  * @author Jackson Dumas (llt190)
+ * @author Ivy Vasquez Sandoval (egi444)
  */
 public class GameController{ //no implements/extends for controller
 	/**
@@ -39,8 +40,9 @@ public class GameController{ //no implements/extends for controller
 	private ArrayList<Pipe> pipes;
 	private GraphicsContext pipeSprite, birdSprite;
 	private AnimationTimer gameplay; //for game loop
-	private boolean running, jumping, passPipe;
+	private boolean running, passPipe;
 	private final long createdMillis;
+	private int jumping;
 	
 	/**
 	 * Constructor for GameController
@@ -50,7 +52,6 @@ public class GameController{ //no implements/extends for controller
 		bird = new Bird(birdFile);
 		pipes = new ArrayList<Pipe>();
 		running = true;
-		jumping = false;
 		createdMillis = System.currentTimeMillis();
 	}
 
@@ -62,7 +63,6 @@ public class GameController{ //no implements/extends for controller
 		this.bird = bird.reset();
 		pipes = new ArrayList<Pipe>();
 		running = true;
-		jumping = false;
 		createdMillis = System.currentTimeMillis();
 	}
 	
@@ -72,7 +72,7 @@ public class GameController{ //no implements/extends for controller
 		backgroundPane.setOnKeyTyped(e -> { //Adding event listener to scene (Space to jump)
 			if (e.getCode().equals(KeyCode.SPACE))
 				System.out.print("hello");
-				jumping = true;
+				jumping = 30;
 		});
 		Main.stage.setScene(scene);
 		Main.stage.show();
@@ -88,7 +88,7 @@ public class GameController{ //no implements/extends for controller
 		pipeSprite = pipesCanvas.getGraphicsContext2D();
 		birdSprite = birdCanvas.getGraphicsContext2D();
 		
-		refreshBird();
+//		refreshBird(); DON'T NEED
 		initializePipeSet();
 
 		count.setText(String.valueOf(0));	
@@ -107,8 +107,8 @@ public class GameController{ //no implements/extends for controller
 		upPipe.setXYVelocity(-.5, 0);
 		downPipe.setXYVelocity(-.5, 0);
 		
-		pipeSprite.drawImage(upPipe.getImage(), upPipe.getXPosition(), upPipe.getYPosition());
-		pipeSprite.drawImage(downPipe.getImage(), downPipe.getXPosition(), downPipe.getYPosition());
+//		pipeSprite.drawImage(upPipe.getImage(), upPipe.getXPosition(), upPipe.getYPosition()); DON'T NEED
+//		pipeSprite.drawImage(downPipe.getImage(), downPipe.getXPosition(), downPipe.getYPosition()); DON'T NEED
 		
 		pipes.addAll(Arrays.asList(upPipe, downPipe));
 		return;
@@ -127,13 +127,15 @@ public class GameController{ //no implements/extends for controller
 						running = false;
 						return;
 					}
-					if (jumping) 
-						jumping = bird.jump(birdSprite);
+					if (jumping>0) {
+						bird.jump(birdSprite);
+						jumping--;
+					}
 					else 
 						bird.fall(birdSprite);
 					generatePipes();
 					refreshPipes();
-					refreshBird();
+//					refreshBird(); DON'T NEED
 					incrementScore();
 					}
 				else {
@@ -181,16 +183,16 @@ public class GameController{ //no implements/extends for controller
 	private void refreshPipes() {
 		for (Pipe p : pipes) {
 			pipeSprite.drawImage(p.getImage(), p.getXPosition(), p.getYPosition());
-			p.refresh(10);
+			p.refresh(6);
 		}
 	}
 	
-	/**
-	 * refreshBird - initializes/redraws bird to screen
-	 */
-	private void refreshBird() {
-		birdSprite.drawImage(bird.getImage(), bird.getXPosition(), bird.getYPosition());
-	}
+//	/**DON'T NEED CREATES DOUBLE IMAGE
+//	 * refreshBird - initializes/redraws bird to screen
+//	 */
+//	private void refreshBird() {
+//		birdSprite.drawImage(bird.getImage(), bird.getXPosition(), bird.getYPosition());
+//	}
 	
 	/**
 	 * getAgeInSeconds

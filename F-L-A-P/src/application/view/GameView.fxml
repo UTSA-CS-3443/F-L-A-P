@@ -15,6 +15,6 @@
       <ImageView fx:id="background" fitHeight="800.0" fitWidth="800.0" focusTraversable="false" pickOnBounds="true" preserveRatio="false" />
       <Label fx:id="count" focusTraversable="false" layoutX="400.0" layoutY="26.0" />
       <Canvas fx:id="pipesCanvas" focusTraversable="false" height="800.0" width="800.0" />
-      <Canvas fx:id="birdCanvas" focusTraversable="false" height="800.0" layoutX="82.0" width="384.0" />
+      <Canvas fx:id="birdCanvas" focusTraversable="false" height="800.0" width="384.0" />
    </children>
 </Group>

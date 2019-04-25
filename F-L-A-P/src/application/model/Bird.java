@@ -7,6 +7,7 @@ import javafx.scene.image.Image;
 
 /**
  * @author Zachary Ellis (ebl533)
+ * @author Ivy Vasquez Sandoval (egi444)
  *
  */
 public class Bird extends Sprite {	
@@ -22,7 +23,7 @@ public class Bird extends Sprite {
 	public Bird(String birdFile) {
 		try {
 			setImage(new Image(new FileInputStream(birdFile), 55, 55, false, false));
-			setWidthHeight((int) getImage().getWidth(), (int) getImage().getHeight());
+			setWidthHeight((int) getImage().getWidth()-54, (int) getImage().getHeight()-54); //HANDICAP
 			setXYPosition(75, 400);
 			setXYVelocity(0, GRAVITY);
 		} catch (FileNotFoundException e) {
@@ -33,12 +34,11 @@ public class Bird extends Sprite {
 	/**
 	 * jump - Updates bird when jump detected
 	 */
-	public boolean jump(GraphicsContext birdSprite) { 
+	public void jump(GraphicsContext birdSprite) { 
 		refresh(-1);
-		setXYPosition(getXPosition(), getYPosition()-100);
-		drawRotatedImage(birdSprite, getImage(), -45, getXPosition(), getYPosition());
+		setXYPosition(getXPosition(), getYPosition()+46);
+		drawRotatedImage(birdSprite, getImage(), -25, getXPosition(), getYPosition());
 		///drawRotatedImage(birdSprite, bird.getImage(), 0, bird.getXPosition(), bird.getYPosition());
-		return false;
 	}
 	
 	/**
@@ -46,8 +46,8 @@ public class Bird extends Sprite {
 	 */
 	public void fall(GraphicsContext birdSprite) {
 		refresh(-1);
-		setXYPosition(getXPosition(), getYPosition()+55);
-		drawRotatedImage(birdSprite, getImage(), 45, getXPosition(), getYPosition());
+		setXYPosition(getXPosition(), getYPosition()+54);
+		drawRotatedImage(birdSprite, getImage(), 25, getXPosition(), getYPosition());
 	}
 	
 	/**

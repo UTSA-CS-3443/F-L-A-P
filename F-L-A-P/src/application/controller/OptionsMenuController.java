@@ -8,6 +8,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.ColorPicker;
 import javafx.scene.control.Slider;
 
 /**
@@ -21,6 +22,7 @@ public class OptionsMenuController {
 	 * OptionsMenuController member variables
 	 */
 	@FXML private Slider slider;
+	@FXML private ColorPicker cp;
 	
 	/**
 	 * Sets the slider to the correct position per the volume level
@@ -41,6 +43,10 @@ public class OptionsMenuController {
 				Main.mp.setVolume(Double.parseDouble(String.format("%.2f", newVolume)));
 			}
 		});
+	}
+	
+	public void selectColor() {
+		
 	}
 	
 	/**
