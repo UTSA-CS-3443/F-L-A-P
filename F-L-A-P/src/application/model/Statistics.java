@@ -9,11 +9,14 @@ import java.util.Scanner;
 /**
  * Singleton class containing methods for maintaining user statistics.
  * 
+ * @author Kevin Tully (xxc738)
  * @author Logan Poole (bct883)
  */
 public class Statistics {
 	
-	//Singleton object of this class
+	/**
+	 * Singleton object of this class
+	 */
 	private static Statistics singleInstance = null;
 	
 	private final String filePath = "src/application/data/statistics.txt";
@@ -22,7 +25,9 @@ public class Statistics {
 	private ArrayList<Integer> runs;
 	private int totalDistance;
 	
-	//Private constructor to protect singleton instance
+	/**
+	 * Class constructor 
+	 */
 	private Statistics()
 	{
 		
@@ -32,7 +37,10 @@ public class Statistics {
 		
 	}
 	
-	//Creates the singleton object if it doesn't exist, then returns the singleton object
+	/**
+	 * Creates a singleton object if it doesn't exist 
+	 * @return singleton object 
+	 */
 	public static Statistics getInstance()
 	{
 		if( singleInstance == null)
@@ -45,7 +53,9 @@ public class Statistics {
 		
 	}
 	
-	//Reads statistics in from file
+	/**
+	 * Reads in data file 
+	 */
 	public void loadStatData() throws Exception
 	{
 		
@@ -86,7 +96,9 @@ public class Statistics {
 		
 	}
 	
-	//Save statistics to data/statistics.txt
+	/**
+	 * Save function that saves statistics to data/statistics.txt
+	 */
 	public void saveStatData() throws Exception
 	{
 		//If file doesn't exist, create it then write to it
@@ -116,6 +128,9 @@ public class Statistics {
 		
 	}
 	
+	/**
+	 * Resets statistics data in game
+	 */
 	public void resetStatData() throws Exception
 	{
 		
@@ -124,7 +139,9 @@ public class Statistics {
 		
 	}
 	
-	//Adds a run to the arraylist, maintaining a descending sort
+	/**
+	 * Run method adds to the arraylist, maintains a descending sort
+	 */
 	public void addRun( int obstaclesCleared )
 	{
 		for( int i=0; i < this.runs.size(); i++ )
@@ -143,6 +160,10 @@ public class Statistics {
 		
 	}
 	
+	/**
+	 * 
+	 * @return number of deaths  
+	 */
 	public int getDeaths()
 	{
 		
@@ -150,6 +171,10 @@ public class Statistics {
 		
 	}
 	
+	/**
+	 * 
+	 * @return returns the longest run
+	 */
 	public int getLongestRun()
 	{
 		if( this.runs.size() == 0 )
@@ -159,6 +184,10 @@ public class Statistics {
 		
 	}
 	
+	/**
+	 * 
+	 * @return number of obstacles cleared 
+	 */
 	public int getObstaclesCleared()
 	{
 		
@@ -176,6 +205,10 @@ public class Statistics {
 		
 	}
 	
+	/**
+	 * 
+	 * @return average of all runs by the player
+	 */
 	public int getAverageRun()
 	{
 		if( this.runs.size() == 0 )
@@ -185,6 +218,10 @@ public class Statistics {
 		
 	}
 	
+	/**
+	 * 
+	 * @return total distance traveled 
+	 */
 	public int getTotalDistance()
 	{
 		
@@ -192,6 +229,10 @@ public class Statistics {
 		
 	}
 	
+	/**
+	 * 
+	 * @param newDistance
+	 */
 	public void setTotalDistance( int newDistance )
 	{
 		
