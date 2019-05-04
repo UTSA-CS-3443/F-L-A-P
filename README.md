@@ -11,3 +11,5 @@ F-L-A-P is a game based off the widely popular mobile game flappy bird. In this 
 Gameplay - F-L-A-P offers the user 5 characters to select from before playing the game, and it's as easy as pressing the spacebar to "flap" your bird through the pipes.
 
 Bugs - known bugs in the curent build of the game consist of choppy collision and occasional frame rate lag, all being fixed by our dedicated team. 
+
+Java 8 or newer is required to run game - Run in Eclipses IDE (Preferred) 
